@@ -3,7 +3,7 @@ import { TileManager } from '../tiles/tile-manager';
 export class Room {
   constructor(id, traits = [], entities = [], tileSize = TILE_SIZE, tileCount = TILE_COUNT, initObj = {p: 0, w: 1}) {
     // I'm not sure if this saves any space, but it's a possible way to refine this for a shorter syntax. Spread operator?
-    let object = {id, tileSet:[], items:[], traits, entities, tileSize, tileCount, text:null}
+    let object = {id, tileSet:[], items:[], traits, entities, tileSize, tileCount, text:null, tiles: () => this.tileSet}
     for (let val in object){
       this[val] = object[val];
     }
@@ -15,6 +15,7 @@ export class Room {
     // this.tileSize = tileSize;
     // this.tileCount = tileCount
     // this.text = null;
+    // this.tiles = () => this.tileSet
     this.init(initObj);
     this.apply(traits);
   }
@@ -56,9 +57,9 @@ export class Room {
     traits.map((_, i) => this.tileSet = traits[i](this.tileSet))
   }
 
-  tiles() {
-      return this.tileSet;
-  }
+  // tiles() {
+  //     return this.tileSet;
+  // }
 
   tick() {}
 
