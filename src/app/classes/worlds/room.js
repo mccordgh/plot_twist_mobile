@@ -2,14 +2,19 @@ import { TileManager } from '../tiles/tile-manager';
 
 export class Room {
   constructor(id, traits = [], entities = [], tileSize = TILE_SIZE, tileCount = TILE_COUNT, initObj = {p: 0, w: 1}) {
-    this.id = id;
-    this.tileSet = [];
-    this.items = [];
-    this.traits = traits;
-    this.entities = entities;
-    this.tileSize = tileSize;
-    this.tileCount = tileCount
-    this.text = null;
+    // I'm not sure if this saves any space, but it's a possible way to refine this for a shorter syntax. Spread operator?
+    let object = {id, tileSet:[], items:[], traits, entities, tileSize, tileCount, text:null}
+    for (let val in object){
+      this[val] = object[val];
+    }
+    // this.id = id;
+    // this.tileSet = [];
+    // this.items = [];
+    // this.traits = traits;
+    // this.entities = entities;
+    // this.tileSize = tileSize;
+    // this.tileCount = tileCount
+    // this.text = null;
     this.init(initObj);
     this.apply(traits);
   }
@@ -25,7 +30,8 @@ export class Room {
   }
 
   init(obj) {
-      let p = obj.p, w = obj.w;
+      // let p = obj.p, w = obj.w;
+      let {p,w} = obj
 
       this.tileSet = [
         [w, w, w, w, w, p, p, w, w, w, w, w],
@@ -44,9 +50,10 @@ export class Room {
   }
 
   apply(traits = []) {
-    for (let i = 0; i < traits.length; i++) {
-        this.tileSet = traits[i](this.tileSet);
-    }
+    // for (let i = 0; i < traits.length; i++) {
+    //     this.tileSet = traits[i](this.tileSet);
+    // }
+    traits.map((_, i) => this.tileSet = traits[i](this.tileSet))
   }
 
   tiles() {
@@ -56,7 +63,9 @@ export class Room {
   tick() {}
 
   render(g) {
-    let count = this.tileCount, size = this.tileSize;
+    // let count = this.tileCount, size = this.tileSize;
+    let {tileCount:count, tileSize:size} = this
+
     for (let y = 0; y < count; y++) {
       for (let x = 0; x < count; x++) {
           TileManager.getTiles()[this.tileSet[y][x]].render(g, x * size, y * size, size);
