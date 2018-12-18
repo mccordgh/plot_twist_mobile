@@ -8,24 +8,28 @@ export class Entity {
     this.handler = handler;
     this.b = new Rectangle(0, 0, TILE_SIZE, TILE_SIZE);
     this.pacified = false;
+    this.getX = () => this.x;
+    this.getY = () => this.y;
+    this.getWidth = () => this.width;
+    this.getHeight = () => this.height;
     // this.moveThrough = false;
   }
 
-  getX() {
-    return this.x;
-  }
+  // getX() {
+  //   return this.x;
+  // }
 
-  getY() {
-    return this.y;
-  }
+  // getY() {
+  //   return this.y;
+  // }
 
-  getWidth() {
-    return this.width;
-  }
-
-  getHeight() {
-    return this.height;
-  }
+  // getWidth() {
+  //   return this.width;
+  // }
+  //
+  // getHeight() {
+  //   return this.height;
+  // }
 
   getCollisionBounds(xOffset, yOffset) {
     return new Rectangle(parseInt(this.x + this.b.x + xOffset),
@@ -45,7 +49,17 @@ export class Entity {
           return true;
         }
     }
-    return false;
+    return true
+
+    // this map only doesn't work for the title screen, the other behaviours I've tested collide properly, but the title screen and edges don't trigger getCollissionBounds
+    // let doesCollide = false
+    // candidates.map(e => {
+    //   if (e.getCollisionBounds(0, 0).intersects(this.getCollisionBounds(xOffset, yOffset))) {
+    //     this.checkForCollisionEvents(this, e);
+    //     doesCollide = true;
+    //   }
+    // })
+    // return doesCollide;
   }
 
   checkForCollisionEvents(e1, e2) {
