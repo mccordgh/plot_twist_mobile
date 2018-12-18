@@ -2,7 +2,7 @@ import { Display } from './display/display';
 import { Handler } from './handler';
 import { KeyManager } from './input/key-manager';
 import { Info } from './menus/info';
-import { StartMenu } from './menus/start-menu';
+// import { StartMenu } from './menus/start-menu';
 import { State } from './states/state';
 import { SoundManager } from './sounds/sound-manager';
 
@@ -103,4 +103,5 @@ export class Game {
     graphics.clearRect(0,0,GAME_SIZE,GAME_SIZE);
     state.getState().render(graphics);
   }
+
 }

@@ -22,6 +22,9 @@ export class World {
     this.room = this.rooms[this.start];
     this.sm = this.handler.getSoundManager();
 
+    this.getEntityManager = () => this.entityManager;
+    this.getSpatialGrid = () => this.spatialGrid;
+
     handler.setWorld(this);
     this.loadWorld();
   }
@@ -157,11 +160,11 @@ export class World {
     // }
   }
 
-  getEntityManager() {
-    return this.entityManager;
-  }
-
-  getSpatialGrid() {
-    return this.spatialGrid;
-  }
+  // getEntityManager() {
+  //   return this.entityManager;
+  // }
+  //
+  // getSpatialGrid() {
+  //   return this.spatialGrid;
+  // }
 }

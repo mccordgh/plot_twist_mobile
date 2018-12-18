@@ -7,37 +7,47 @@ export class EntityManager {
   constructor(_handler, _player){
     handler = _handler;
     player = _player;
-    playerStart = { x: player.x, y: player.y };
+    // playerStart = { x: player.x, y: player.y };
+    this.getPlayer = () => player;
+    this.getHandler = () => handler;
+    this.getEntities = () => entities;
+    this.tick = dt => entities.map(entity => entity.tick(dt));
+    this.render = g => entities.map(entity => entity.render(g));
+    this.findEntitiesByType = t => entities.filter(e => e.type == t);
+    this.addSpeech = (entity, text) => this.addEntity(new SpeechBox(handler, entity, text));
+    playerStart = { player };
     entities = new Array(player);
   }
 
-  tick(dt) {
-    for(let i = 0; i < entities.length; i++){
-      entities[i].tick(dt);
-    }
-  }
+  // tick(dt) {
+    // for(let i = 0; i < entities.length; i++){
+    //   entities[i].tick(dt);
+    // }
+  //   entities.map(entity => entity.tick(dt))
+  // }
 
-  render(g) {
-    for(let i = 0; i < entities.length; i++){
-      entities[i].render(g);
-    }
-  }
+  // render(g) {
+    // for(let i = 0; i < entities.length; i++){
+    //   entities[i].render(g);
+    // }
+  //   entities.map(entity => entity.render(g))
+  // }
 
-  getPlayer() {
-    return player;
-  }
+  // getPlayer() {
+  //   return player;
+  // }
+  //
+  // getHandler() {
+  //   return handler;
+  // }
+  //
+  // getEntities() {
+  //   return entities;
+  // }
 
-  getHandler() {
-    return handler;
-  }
-
-  getEntities() {
-    return entities;
-  }
-
-  findEntitiesByType(t) {
-    return entities.filter(e => e.type == t);
-  }
+  // findEntitiesByType(t) {
+  //   return entities.filter(e => e.type == t);
+  // }
 
   addEntity(e) {
     // console.log(e);
@@ -56,10 +66,9 @@ export class EntityManager {
       room.addEntity(player.item);
     }
 
-    room.entities.forEach((e) => {
+    room.entities.map(e => {
       this.addEntity(e);
-
-      if (e.type === 'g') e.resetPos();
+      if (e.type == 'g') e.resetPos();
     });
 
     // console.log({entities: room.entities});
@@ -86,23 +95,29 @@ export class EntityManager {
   }
 
   pacifyAll() {
-    let rooms = handler.getWorld().rooms;
-    let keys = Object.keys(rooms);
+    // let {rooms} = handler.getWorld();
+    // let keys = Object.keys(rooms);
 
     player.pacified = true;
 
-    for (let i = 0; i < keys.length; i++) {
-      for (let j = 0; j < rooms[i].entities.length; j++) {
-        let ent = rooms[i].entities[j];
+    Object.values(handler.getWorld().rooms).map(room => {
+      room.entities.map(ent => {
         ent.pacified = true;
         if (ent.type == 'g') ent.speed = 40;
-      }
-    }
+      })
+    })
+    // for (let i = 0; i < keys.length; i++) {
+    //   for (let j = 0; j < rooms[i].entities.length; j++) {
+    //     let ent = rooms[i].entities[j];
+    //     ent.pacified = true;
+    //     if (ent.type == 'g') ent.speed = 40;
+    //   }
+    // }
   }
 
-  addSpeech(entity, text) {
-    this.addEntity(new SpeechBox(handler, entity, text));
-  }
+  // addSpeech(entity, text) {
+  //   this.addEntity(new SpeechBox(handler, entity, text));
+  // }
 
   respawn() {
     player.x = playerStart.x;
