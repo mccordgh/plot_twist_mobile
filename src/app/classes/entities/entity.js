@@ -40,17 +40,6 @@ export class Entity {
   checkEntityCollisions(xOffset, yOffset) {
     let candidates =  this.handler.getWorld().getSpatialGrid().retrieve(new Rectangle(this.x + this.b.x, this.y + this.b.y, this.b.s, this.b.s), this);
     // if (candidates.length) console.log(candidates);
-    // for(let i = 0; i < candidates.length; i++) {
-    //   let e = candidates[i];
-    //
-    //     if (e.getCollisionBounds(0, 0).intersects(this.getCollisionBounds(xOffset, yOffset))) {
-    //       this.checkForCollisionEvents(this, e);
-    //
-    //       return true;
-    //     }
-    // }
-    // return false;
-
     // refactored to use map and flag
     let doesCollide = 0;
     candidates.map(e => {
