@@ -63,14 +63,14 @@ ctx.shakeScreen = () => {
   let x = rndInt(-15, 15);
   let y = rndInt(-15, 15);
 
-  try {
-    let imgData = graphics.getImageData(0,0, GAME_SIZE, GAME_SIZE);
+  // try {
+  let imgData = graphics.getImageData(0,0, GAME_SIZE, GAME_SIZE);
 
-    // graphics.fillStyle = 'black';
-    // graphics.fillRect(0, 0, GAME_SIZE, GAME_SIZE);
+  // graphics.fillStyle = 'black';
+  // graphics.fillRect(0, 0, GAME_SIZE, GAME_SIZE);
 
-    graphics.putImageData(imgData, x, y);
-  } catch(e) {
-    // console.error(e);
-  }
+  graphics.putImageData(imgData, x, y);
+  // } catch(e) {
+  //   // console.error(e);
+  // }
 }

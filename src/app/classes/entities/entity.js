@@ -8,28 +8,28 @@ export class Entity {
     this.handler = handler;
     this.b = new Rectangle(0, 0, TILE_SIZE, TILE_SIZE);
     this.pacified = false;
-    // this.getX = () => this.x;
-    // this.getY = () => this.y;
-    // this.getWidth = () => this.width;
-    // this.getHeight = () => this.height;
+    this.getX = () => this.x;
+    this.getY = () => this.y;
+    this.getWidth = () => this.width;
+    this.getHeight = () => this.height;
     // this.moveThrough = false;
   }
 
-  getX() {
-    return this.x;
-  }
+  // getX() {
+  //   return this.x;
+  // }
 
-  getY() {
-    return this.y;
-  }
+  // getY() {
+  //   return this.y;
+  // }
 
-  getWidth() {
-    return this.width;
-  }
-
-  getHeight() {
-    return this.height;
-  }
+  // getWidth() {
+  //   return this.width;
+  // }
+  //
+  // getHeight() {
+  //   return this.height;
+  // }
 
   getCollisionBounds(xOffset, yOffset) {
     return new Rectangle(parseInt(this.x + this.b.x + xOffset),
@@ -40,35 +40,20 @@ export class Entity {
   checkEntityCollisions(xOffset, yOffset) {
     let candidates =  this.handler.getWorld().getSpatialGrid().retrieve(new Rectangle(this.x + this.b.x, this.y + this.b.y, this.b.s, this.b.s), this);
     // if (candidates.length) console.log(candidates);
-    for(let i = 0; i < candidates.length; i++) {
-      let e = candidates[i];
-
-        if (e.getCollisionBounds(0, 0).intersects(this.getCollisionBounds(xOffset, yOffset))) {
-          this.checkForCollisionEvents(this, e);
-
-          return true;
-        }
-    }
-    return true
-
-    // this map only doesn't work for the title screen, the other behaviours I've tested collide properly, but the title screen and edges don't trigger getCollissionBounds
-    // let doesCollide = false
-    // candidates.map(e => {
-    //   if (e.getCollisionBounds(0, 0).intersects(this.getCollisionBounds(xOffset, yOffset))) {
-    //     this.checkForCollisionEvents(this, e);
-    //     doesCollide = true;
-    //   }
-    // })
-    // return doesCollide;
+    // refactored to use map and flag
+    let doesCollide = 0;
+    candidates.map(e => {
+      if (e.getCollisionBounds(0, 0).intersects(this.getCollisionBounds(xOffset, yOffset))) {
+        this.checkForCollisionEvents(this, e);
+        doesCollide = 1;
+      }
+    })
+    return doesCollide;
   }
 
   checkForCollisionEvents(e1, e2) {
     // console.log('checking collisions', e1.pacified, e2.pacified);
-    if (e1.pacified || e2.pacified) {
-      this.endingEvents(e1, e2);
-    } else {
-      this.gameEvents(e1, e2);
-    }
+    (e1.pacified || e2.pacified) ? this.endingEvents(e1, e2) : this.gameEvents(e1, e2);
   }
 
   gameEvents(e1, e2) {
