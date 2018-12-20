@@ -15,59 +15,6 @@ export class Handler {
       setSoundManager: s => sm = s,
       setWorld: world => this.world = world
     };
-    for(let val in object){
-      this[val] = object[val];
-    }
-    // this.game = game;
-    // this.machine = null;
-    // this.getWidth = () => this.game.getWidth();
-    // this.getHeight = () => this.game.getHeight();
-    // this.getKeyManager = () => this.game.getKeyManager();
-    // this.getMachine = () => this.machine;
-    // this.getWorld = () => this.world;
-    // this.getGame = () => this.game;
-    // this.getSoundManager = () => sm;
-    // this.setSoundManager = s => sm=s;
-    // this.setWorld = world => this.world = world;
+    Object.entries(object).map(entry => this[entry[0]] = entry[1])
   }
-
-  // getWidth() {
-  //   return this.game.getWidth();
-  // }
-  //
-  // getHeight() {
-  //   return this.game.getHeight();
-  // }
-
-  // getKeyManager() {
-  //   return this.game.getKeyManager();
-  // }
-
-  // getGameCamera() {
-  //   return this.game.getGameCamera();
-  // }
-
-  // getMachine() {
-  //   return this.machine;
-  // }
-
-  // getWorld() {
-  //   return this.world;
-  // }
-
-  // setWorld(world) {
-  //   this.world = world;
-  // }
-
-  // getGame() {
-  //   return this.game;
-  // }
-
-  // getSoundManager(){
-  //   return sm;
-  // }
-
-  // setSoundManager(s) {
-  //   sm = s;
-  // }
 }

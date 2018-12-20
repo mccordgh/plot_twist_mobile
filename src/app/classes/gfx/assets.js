@@ -69,21 +69,41 @@ let addAnimations = (name, right, left = 0) => {
 // tiles.lantern = cT(tiles, 0, 2);
 
 
-let all = new Assets('all', PATH + 'all.png');
-addAnimations('p', 0, 1);
-addAnimations('g', 2, 3);
-addAnimations('w', 4)
-addAnimations('p_key', 5);
-addAnimations('g_key', 6)
-addAnimations('y_key', 7)
-addAnimations('b_key', 8)
-addAnimations('p_m', 9);
-addAnimations('g_m', 10);
-addAnimations('y_m', 11);
-addAnimations('b_m', 12);
-addAnimations('s', 13);
+// let all = new Assets('all', PATH + 'all.png');
+// addAnimations('p', 0, 1);
+// addAnimations('g', 2, 3);
+// addAnimations('w', 4)
+// addAnimations('p_key', 5);
+// addAnimations('g_key', 6)
+// addAnimations('y_key', 7)
+// addAnimations('b_key', 8)
+// addAnimations('p_m', 9);
+// addAnimations('g_m', 10);
+// addAnimations('y_m', 11);
+// addAnimations('b_m', 12);
+// addAnimations('s', 13);
+// addAnimations('prop1', 14, 15)
+// addAnimations('prop2', 16, 17)
+// addAnimations('ma', 18)
+// addAnimations('desk', 19)
+// addAnimations('grass', 20)
+
+let all = new Assets('all', PATH + 'sprites32.png');
+addAnimations('p', 0, 1)
+addAnimations('g', 2, 3)
+addAnimations('w', 11)
+addAnimations('p_key', 4)
+addAnimations('g_key', 5)
+addAnimations('y_key', 6)
+addAnimations('b_key', 7)
+addAnimations('p_m', 8)
+addAnimations('g_m', 9)
+addAnimations('y_m', 10)
+addAnimations('b_m', 12)
+addAnimations('s', 13)
 addAnimations('prop1', 14, 15)
 addAnimations('prop2', 16, 17)
 addAnimations('ma', 18)
 addAnimations('desk', 19)
 addAnimations('grass', 20)
+

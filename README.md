@@ -1,4 +1,10 @@
+Shamelessly forked and stolen from Matt McCord aka McCoordinator with his cooperation. Project being developed into "Plot Twist" (working title).
+
+Do you dream of home-grown heroes? Imagine being able to cultivate the perfect patch of heroes to send against your foes. Join your friends as you plant, grow, and release powerful heroes on a journey to their inevitable death in PLOT TWIST
+
 # [The Core](https://mccordgh.github.io/the_line_js13kgames_2018/)
+
+
 
 <img src="https://media.giphy.com/media/28g04nWnyycn0OkOkf/giphy.gif" alt="The Core title screen gif">
 
