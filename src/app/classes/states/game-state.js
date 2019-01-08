@@ -5,7 +5,7 @@ export class GameState {
     }
 
     tick(deltaTime) {
-        //
+        this.world.tick(deltaTime);
     }
 
     render(graphics) {
