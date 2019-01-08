@@ -1,11 +1,16 @@
 import { GameState } from './states/game-state';
 import { GraphicsManager } from './graphics/graphics-manager';
+import { StateManager } from './states/state-manager';
+
 import gameConstants from '../constants/game-constants';
 
 export class Game {
     // setup all the things aka managers of input, sound, etc
     initialize() {
         this.graphicsManager = new GraphicsManager();
+
+        this.stateManager = new StateManager();
+        this.stateManager.setState(new GameState());
     }
 
     run() {
@@ -43,13 +48,11 @@ export class Game {
 
     // Update all game logic
     tick(deltaTime) {
-        //
+        this.stateManager.getState().tick(deltaTime);
     }
 
     // Draw everything after it is updated
-    render() {
-        this.graphicsManager.getGraphics().drawText('Hello Game', 150, 100);
-
-        //
+    render(graphics) {
+        this.stateManager.getState().render(graphics);
     }
 };
