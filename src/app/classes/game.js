@@ -8,17 +8,11 @@ import gameConstants from '../constants/game-constants';
 export class Game {
     // setup all the things aka managers of input, sound, etc
     initialize() {
-        this.graphicsManager = new GraphicsManager();
-
-        this.initializeState();
-    }
-
-    initializeState() {
         this.stateManager = new StateManager();
+        this.managerHandler = new ManagerHandler(this);
 
-        const managerHandler = new ManagerHandler(this);
         const world = new World();
-        const gameState = new GameState(managerHandler, world);
+        const gameState = new GameState(this.managerHandler, world);
 
         this.stateManager.setState(gameState);
     }
@@ -45,7 +39,7 @@ export class Game {
                 deltaTime = timer / 1000;
 
                 this.tick(deltaTime);
-                this.render(this.graphicsManager.getGraphics());
+                this.render(this.managerHandler.getGraphicsManager().getGraphics());
 
                 timer = 0;
             }
