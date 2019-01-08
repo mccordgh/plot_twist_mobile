@@ -1,5 +1,6 @@
 import { GameState } from './states/game-state';
 import { GraphicsManager } from './graphics/graphics-manager';
+import { ManagerHandler } from './helpers/manager-handler';
 import { StateManager } from './states/state-manager';
 
 import gameConstants from '../constants/game-constants';
@@ -9,8 +10,17 @@ export class Game {
     initialize() {
         this.graphicsManager = new GraphicsManager();
 
+        this.initializeState();
+    }
+
+    initializeState() {
         this.stateManager = new StateManager();
-        this.stateManager.setState(new GameState());
+
+        const managerHandler = new ManagerHandler(this);
+        const world = new World();
+        const gameState = new GameState(managerHandler, world);
+
+        this.stateManager.setState(gameState);
     }
 
     run() {

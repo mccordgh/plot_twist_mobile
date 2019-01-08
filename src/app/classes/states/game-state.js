@@ -1,6 +1,7 @@
 export class GameState {
-    constructor() {
-        //
+    constructor(managerHandler, world) {
+        this.managerHandler = managerHandler;
+        this.world = world;
     }
 
     tick(deltaTime) {
@@ -8,6 +9,18 @@ export class GameState {
     }
 
     render(graphics) {
-        graphics.drawText('Game State!!!', 200, 200);
+        this.world.render(graphics);
+    }
+
+    getManagerHandler() {
+        return this.managerHandler;
+    }
+
+    getWorld() {
+        return this.world;
+    }
+
+    setWorld(world) {
+        this.world = world;
     }
 }
