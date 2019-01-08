@@ -1,3 +1,4 @@
+import { GameState } from './states/game-state';
 import { GraphicsManager } from './graphics/graphics-manager';
 import gameConstants from '../constants/game-constants';
 
@@ -29,7 +30,7 @@ export class Game {
                 deltaTime = timer / 1000;
 
                 this.tick(deltaTime);
-                this.render();
+                this.render(this.graphicsManager.getGraphics());
 
                 timer = 0;
             }
