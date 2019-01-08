@@ -1,5 +1,4 @@
 import { GameState } from './states/game-state';
-import { GraphicsManager } from './graphics/graphics-manager';
 import { ManagerHandler } from './helpers/manager-handler';
 import { StateManager } from './states/state-manager';
 import { World } from './worlds/world';
