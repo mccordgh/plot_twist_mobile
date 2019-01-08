@@ -33,6 +33,10 @@ export class GraphicsManager {
         this.graphics.webkitImageSmoothingEnabled = false;
     }
 
+    getCanvas() {
+        return this.canvas;
+    }
+
     getGraphics() {
         return this.graphics;
     }
