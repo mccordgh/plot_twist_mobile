@@ -1,5 +1,5 @@
-import Game from './classes/game';
+import { Game } from './classes/game';
 
-const game = new Game;
+const game = new Game();
 
 game.run();

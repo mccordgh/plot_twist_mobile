@@ -1,9 +1,9 @@
 export class World {
-  tick(dt){
+    tick(deltaTime) {
+        //
+    }
 
-  }
-  render(graphics){
-    graphics.drawText("Hello, World!", 250, 250);
-  }
-
+    render(graphics) {
+        graphics.drawText('WOrld Hello!', 200, 200);
+    }
 }

@@ -1,14 +1,13 @@
-export class StateManager{
-  constructor(){
-    this.currentState = null;
-  }
+export class StateManager {
+    construct() {
+        this.currentState = null;
+    }
 
-  getState(){
-    return this.currentState;
-  }
+    getState() {
+        return this.currentState;
+    }
 
-  setState(state){
-    this.currentState = state;
-  }
-
+    setState(state) {
+        this.currentState = state;
+    }
 }

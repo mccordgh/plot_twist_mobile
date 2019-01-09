@@ -1,23 +1,23 @@
-import {MouseManager} from "../input/mouse-manager";
-import {GraphicsManager} from "../graphics/graphics-manager";
+import { MouseManager } from "../input/mouse-manager";
+import { GraphicsManager } from "../graphics/graphics-manager";
 
-export class ManagerHandler{
-  constructor(game){
-    this.game = game;
-    this.graphicsManager = new GraphicsManager();
-    this.mouseManager = new MouseManager();
-  }
+export class ManagerHandler {
+    constructor(game) {
+        this.game = game;
 
-  getGame(){
-    return this.game;
-  }
+        this.graphicsManager = new GraphicsManager();
+        this.mouseManager = new MouseManager(this);
+    }
 
-  getGraphicsManager(){
-    return this.graphicsManager();
-  }
+    getGame() {
+        return this.game;
+    }
 
-  getMouseManager(){
-    return this.mouseManager;
-  }
+    getGraphicsManager() {
+        return this.graphicsManager;
+    }
 
+    getMouseManager() {
+        return this.mouseManager;
+    }
 }

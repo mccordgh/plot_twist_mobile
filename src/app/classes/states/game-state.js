@@ -1,26 +1,26 @@
 export class GameState {
-  constructor(managerHandler, world) {
-    this.managerHandler = managerHandler;
-    this.world = world;
-  }
+    constructor(managerHandler, world) {
+        this.managerHandler = managerHandler;
+        this.world = world;
+    }
 
-  tick(dt) {
-    this.world.tick(dt);
-  }
+    tick(deltaTime) {
+        this.world.tick(deltaTime);
+    }
 
-  render(graphics) {
-    this.world.render(graphics);
-  }
+    render(graphics) {
+        this.world.render(graphics);
+    }
 
-  getManagerHandler(){
-    return this.managerHandler;
-  }
+    getManagerHandler() {
+        return this.managerHandler;
+    }
 
-  getWorld(){
-    return this.world
-  }
+    getWorld() {
+        return this.world;
+    }
 
-  setWorld(world){
-    this.world = world;
-  }
+    setWorld(world) {
+        this.world = world;
+    }
 }
