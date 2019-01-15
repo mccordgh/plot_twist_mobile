@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
-// const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 // const CompressionPlugin = require('compression-webpack-plugin');
 
 // const isProduction = process.env.npm_lifecycle_event === 'build';
@@ -40,9 +40,9 @@ let config = {
   plugins: [
     new HtmlWebpackPlugin(htmlConfig),
     new HtmlWebpackInlineSourcePlugin(),
-    // new CopyWebpackPlugin([
-    //   { from: 'src/res/all.png', to: 'src/res/all.png' },
-    //   ])
+    new CopyWebpackPlugin([
+      { from: 'src/resources/cursor.png', to: 'src/resources/cursor.png' },
+      ])
   ],
   stats: 'minimal',
   devServer: {
