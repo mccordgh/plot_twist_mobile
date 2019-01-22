@@ -13,7 +13,9 @@ export class Game {
         this.stateManager = this.managerHandler.createStateManager();
         this.mouseManager = this.managerHandler.createMouseManager();
 
-        const world = new World(this.managerHandler);
+        const world = this.managerHandler.createWorld();
+        world.init();
+
         const gameState = new GameState(this.managerHandler, world);
 
         this.stateManager.setState(gameState);
@@ -59,7 +61,7 @@ export class Game {
 
     // Draw everything after it is updated
     render(graphics) {
-        graphics.clearRect(0, 0, gameConstants.GAME_HEIGHT, gameConstants.GAME_WIDTH);
+        graphics.clearRect(0, 0, gameConstants.GAME_WIDTH, gameConstants.GAME_HEIGHT);
 
         this.stateManager.getState().render(graphics);
     }
