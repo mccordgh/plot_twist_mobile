@@ -17,4 +17,38 @@ export class Entity {
 
         return new Rectangle(x, y, this.bounds.width, this.bounds.height);
     }
+
+    checkEntityCollisions(xOffset, yOffset) {
+        let candidates =  this.handler.getWorld().getSpatialGrid().retrieve(new Rectangle(this.x + this.bounds.x, this.y + this.bounds.y, this.bounds.width, this.bounds.height), this);
+
+        for(let i = 0; i < candidates.length; i++) {
+            let entity = candidates[i];
+
+            if (entity.getCollisionBounds(0, 0).intersects(this.getCollisionBounds(xOffset, yOffset))) {
+              this.checkForCollisionEvents(this, entity);
+
+              return true;
+            }
+        }
+
+        return false;
+    }
+
+    checkForCollisionEvents(e1, e2) {
+        // if player and guard bump
+        if (this.checkCollidingTypes(e1, e2, gameConstants.TYPES.HOUSE, gameConstants.TYPES.MONSTER)) {
+            const house = e1.type === gameConstants.TYPES.HOUSE ? e1 : e2;
+            const monster = e1.type === gameConstants.TYPES.MONSTER ? e1 : e2;
+
+            this.monsterHouseCollision(monster, house);
+        }
+    }
+
+    checkCollidingTypes(e1, e2, type1, type2) {
+        return ((e1.type === type1 && e2.type === type2) || (e1.type === type2 && e2.type === type1));
+    }
+
+    monsterHouseCollision(monster, house) {
+        house.health -= monster.damage;
+    }
 }
