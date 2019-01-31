@@ -1,126 +1,61 @@
-import { Rectangle } from '../gfx/shapes/rectangle';
-import SpeechBox from './statics/speech-box';
-
-let handler, player, entities, playerStart;
+import { PlayerCursor } from '../input/player-cursor';
+import { Rectangle } from './collision/rectangle';
 
 export class EntityManager {
-  constructor(_handler, _player){
-    handler = _handler;
-    player = _player;
-    // playerStart = { x: player.x, y: player.y };
-    this.getPlayer = () => player;
-    this.getHandler = () => handler;
-    this.getEntities = () => entities;
-    this.tick = dt => entities.map(entity => entity.tick(dt));
-    this.render = g => entities.map(entity => entity.render(g));
-    this.findEntitiesByType = t => entities.filter(e => e.type == t);
-    this.addSpeech = (entity, text) => this.addEntity(new SpeechBox(handler, entity, text));
-    playerStart = { player };
-    entities = new Array(player);
-  }
-
-  // tick(dt) {
-    // for(let i = 0; i < entities.length; i++){
-    //   entities[i].tick(dt);
-    // }
-  //   entities.map(entity => entity.tick(dt))
-  // }
-
-  // render(g) {
-    // for(let i = 0; i < entities.length; i++){
-    //   entities[i].render(g);
-    // }
-  //   entities.map(entity => entity.render(g))
-  // }
-
-  // getPlayer() {
-  //   return player;
-  // }
-  //
-  // getHandler() {
-  //   return handler;
-  // }
-  //
-  // getEntities() {
-  //   return entities;
-  // }
-
-  // findEntitiesByType(t) {
-  //   return entities.filter(e => e.type == t);
-  // }
-
-  addEntity(e) {
-    // console.log(e);
-    entities.push(e);
-    // console.log(e, e.b.x, e.b.y, e.b.s);
-    handler.getWorld().getSpatialGrid().insert(new Rectangle(e.x + e.b.x, e.y + e.b.y, e.b.s, e.b.s), e);
-  }
-
-  newRoom(prevRoom, room, respawn = false) {
-    entities = [];
-    if (respawn) this.respawn();
-    this.addEntity(player);
-
-    if (player.item && (prevRoom != null) && player.item.type != 'siren') {
-      prevRoom.removeEntity(player.item);
-      room.addEntity(player.item);
+    constructor(handler) {
+        this.handler = handler;
+        this.cursor = new PlayerCursor();
+        this.entities = [];
     }
 
-    room.entities.map(e => {
-      this.addEntity(e);
-      if (e.type == 'g') e.resetPos();
-    });
+    tick(deltaTime) {
+        for (let i = 0; i < this.entities.length; i += 1) {
+            this.entities[i].tick(deltaTime);
+        }
+    }
 
-    // console.log({entities: room.entities});
-    // window.ee = room.entities;
-  }
+    render(graphics) {
+        for (let i = 0; i < this.entities.length; i += 1) {
+            this.entities[i].render(graphics);
+        }
 
-  removeEntity(e) {
-    let index = entities.indexOf(e);
+        // if (this.cursor.x && this.cursor.y) {
+        //     this.cursor.render(graphics);
+        // }
+    }
 
-		handler.getWorld().getSpatialGrid().remove(new Rectangle(e.x + e.b.x, e.y + e.b.y, e.b.s, e.b.s), e);
+    addEntity(entity) {
+        this.entities.push(entity);
 
-    entities.splice(index, 1);
-  }
+        const rectangle = new Rectangle(
+            entity.x + entity.bounds.x, entity.y + entity.bounds.y, entity.bounds.width, entity.bounds.height
+        );
 
-  removeEntitiesByType(type) {
-    entities = entities.filter((e) => {
-      if (e.type === type) {
-        handler.getWorld().getSpatialGrid().remove(new Rectangle(e.x + e.b.x, e.y + e.b.y, e.b.s, e.b.s), e);
-        return false;
-      } else {
-        return e;
+        this.handler.getWorld().getSpatialGrid().insert(rectangle, entity);
+    }
+
+    removeEntity(entity) {
+        let index = this.entities.indexOf(entity);
+
+        this.handler.getWorld().getSpatialGrid().remove(
+            new Rectangle(
+                entity.x + entity.bounds.x, entity.y + entity.bounds.y, entity.bounds.width, entity.bounds.height,
+            ), entity
+        );
+
+        this.entities.splice(index, 1);
       }
-    });
-  }
 
-  pacifyAll() {
-    // let {rooms} = handler.getWorld();
-    // let keys = Object.keys(rooms);
+    mouseClick(data) {
+        //
+    }
 
-    player.pacified = true;
+    mouseMove(data) {
+        this.cursor.x = data.x;
+        this.cursor.y = data.y;
+    }
 
-    Object.values(handler.getWorld().rooms).map(room => {
-      room.entities.map(ent => {
-        ent.pacified = true;
-        if (ent.type == 'g') ent.speed = 40;
-      })
-    })
-    // for (let i = 0; i < keys.length; i++) {
-    //   for (let j = 0; j < rooms[i].entities.length; j++) {
-    //     let ent = rooms[i].entities[j];
-    //     ent.pacified = true;
-    //     if (ent.type == 'g') ent.speed = 40;
-    //   }
-    // }
-  }
-
-  // addSpeech(entity, text) {
-  //   this.addEntity(new SpeechBox(handler, entity, text));
-  // }
-
-  respawn() {
-    player.x = playerStart.x;
-    player.y = playerStart.y;
-  }
+    getEntitiesByType(type) {
+        return this.entities.filter(entity => entity.type == type);
+    }
 }

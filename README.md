@@ -1,33 +1,18 @@
-Shamelessly forked and stolen from Matt McCord aka McCoordinator with his cooperation. Project being developed into "Plot Twist" (working title).
+# JS Game Engine Starter Kit
 
-Do you dream of home-grown heroes? Imagine being able to cultivate the perfect patch of heroes to send against your foes. Join your friends as you plant, grow, and release powerful heroes on a journey to their inevitable death in PLOT TWIST
+### Setup
 
-# [The Core](https://mccordgh.github.io/the_line_js13kgames_2018/)
+1. Make sure Node version is `v11.6.0`
 
-
-
-<img src="https://media.giphy.com/media/28g04nWnyycn0OkOkf/giphy.gif" alt="The Core title screen gif">
-
-* Written in JavaScript
-
-* The CORE was written for the yearly code-golfing competition js13kgames, running from August 13 2018 to September 13 2018. The goal of this competition is to submit a full game made within a month, with all assets, libraries, etc coming in at under 13Kb compressed and able to run off-line. The theme of this competition was "offline".
-
-* You are one of many workers trapped in a factory and forced to work on THE CORE, a sinister mind control machine. The first version of THE CORE currently has everyone in the factory (workers, guards, managers) under it's control. The second version will enslave the world! Find the four keys, and use the on THE CORE to take it offline for good!
-
-For a fun surprise, make sure to speak to a guard after you have taken the machine offline :)
-
-## Play The Core now:
-
-* https://mccordgh.github.io/the_line_js13kgames_2018/
-
-## Download and run locally:
-
+2. Make sure NPM version is `6.5.0`
 ```
-1. $ git clone git@github.com:mccordgh/the_line_js13kgames_2018.git
-2. $ npm install
-3. $ npm run start
-4. Navigate to / click the url displayed in the console.
+* OS X and LINUX users can use Node Version Manager [https://github.com/creationix/nvm] to easily swap and install node versions on the fly!
+
+* Windows users should use nvm-windows! [https://github.com/coreybutler/nvm-windows]
 ```
-
-# Post Mortem
-
+3. Clone this repository
+4. `$ cd js_game_engine_starter_kit`
+5. `$ npm install`
+6. `$ npm run start`
+7. Navigate to `http://localhost:8080/`
+8. There should be a black screen with a big white box, and "`Hello world`" in the dev tools Console.

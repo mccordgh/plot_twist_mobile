@@ -1,107 +1,68 @@
-import { Display } from './display/display';
-import { Handler } from './handler';
-import { KeyManager } from './input/key-manager';
-import { Info } from './menus/info';
-// import { StartMenu } from './menus/start-menu';
-import { State } from './states/state';
-import { SoundManager } from './sounds/sound-manager';
+import { GameState } from './states/game-state';
+import { ManagerHandler } from './helpers/manager-handler';
+import { StateManager } from './states/state-manager';
+import { World } from './worlds/world';
 
-// let i = 0;
-let display,
-//   gameState,
-  graphics,
-//   handler,
-  keyManager,
-//   startMenu,
-//   soundManager,
-  state;
+import gameConstants from '../constants/game-constants';
 
 export class Game {
-  run() {
-    this.init();
-    let fps = 60;
-    let timePerTick = 1000 / fps;
-    let delta = 0;
-    let dt = 0;
-    let now = Date.now();
-    let lastTime = Date.now();
-    let timer = 0;
+    // setup all the things aka managers of input, sound, etc
+    initialize() {
+        this.managerHandler = new ManagerHandler(this);
+        this.graphicsManager = this.managerHandler.createGraphicsManager();
+        this.stateManager = this.managerHandler.createStateManager();
+        this.mouseManager = this.managerHandler.createMouseManager();
 
-    let loop = () => {
-      now = Date.now();
-      delta = now - lastTime;
-      timer += delta;
-      lastTime = now;
+        const world = this.managerHandler.createWorld();
+        world.init();
 
-      if(timer >= timePerTick) {
-        dt = timer / 1000;
-        this.tick(dt);
-        this.render();
-        timer = 0;
-      }
-      window.requestAnimationFrame(loop);
-    };
+        const gameState = new GameState(this.managerHandler, world);
 
-    loop();
-  }
+        this.stateManager.setState(gameState);
+    }
 
-  getKeyManager() {
-    return keyManager;
-  }
+    run() {
+        this.initialize();
 
-  getDisplay(){
-    return display;
-  }
+        const fps = gameConstants.FPS;
+        const timePerTick = 1000 / fps;
 
-  // getWidth() {
-  //   return this.width;
-  // }
+        let delta = 0;
+        let deltaTime = timer / 1000;
+        let now = Date.now();
+        let lastTime = now;
+        let timer = 0;
 
-  // getHeight() {
-  //   return this.height;
-  // }
+        const loop = () => {
+            now = Date.now();
+            delta = now - lastTime;
+            timer += delta;
+            lastTime = now;
 
-  // getGameCamera() {
-  //   return gameCamera;
-  // }
+            if (timer >= timePerTick) {
+                deltaTime = timer / 1000;
 
-  getGameState() {
-    return state;
-  }
+                this.tick(deltaTime);
+                this.render(this.graphicsManager.getGraphics());
 
-  init() {
-    let handler = new Handler(this);
-    display = new Display();
-    keyManager = new KeyManager();
-    // this.d = new Dialogue();
-    graphics = display.getGraphics();
-    state = new State();
-    // gameCamera = new GameCamera(handler, 0, 0);
-    let soundManager = new SoundManager();
-    handler.setSoundManager(soundManager);
+                timer = 0;
+            }
 
-    let info = new Info(handler, keyManager);
-    state.setState(info);
-    // let startMenu = new StartMenu(handler);
-    // state.setState(startMenu);
-    // let gameOver = new GameOver(handler, 'death');
-    // state.setState(gameOver);
-    // gameState = new GameState(handler);
-    // state.setState(gameState);
-  }
+            window.requestAnimationFrame(loop);
+        }
 
-  tick(dt) {
-    // this.d.tick(handler);
-    keyManager.tick();
-    ANIMATION_TIMER.tick();
-    // if (state.getState() && !display.paused)
-    state.getState().tick(dt);
-  }
+        loop();
+    }
 
-  render(){
-  //   if (state.getState() && !display.paused)
-    graphics.clearRect(0,0,GAME_SIZE,GAME_SIZE);
-    state.getState().render(graphics);
-  }
+    // Update all game logic
+    tick(deltaTime) {
+        this.stateManager.getState().tick(deltaTime);
+    }
 
-}
+    // Draw everything after it is updated
+    render(graphics) {
+        graphics.clearRect(0, 0, gameConstants.GAME_WIDTH, gameConstants.GAME_HEIGHT);
+
+        this.stateManager.getState().render(graphics);
+    }
+};
