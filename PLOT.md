@@ -22,5 +22,9 @@ Possible issue: leading people to believe certain pets can safely eat many diffe
 ## Mechanics
 Similar map style to Plants vs. Zombies, but mechanically and flavor-fully very different.
 
-#### Gaining Resources
+#### Advancement over time
 Short term resource gain: Killing/pacifying invaders, resources over time, and/or manual clicking (similar to P v Z)
+
+Mid term advantages (Session length): Growing new plants to defend your back-row developments. Also possible: Maintaining current crops/healing. Healing doesn't match up that well with food, though
+
+Long term Plans (Multi-Session/Campaign): Improve food stuffs through traditional breeding methods => GMOs. 
