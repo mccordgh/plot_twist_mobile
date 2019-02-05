@@ -14,13 +14,11 @@ export class Monster extends Creature {
         this.height = 64;
         this.damage = 4;
 
-        const head = this.height / 4;
-
         this.bounds = {
             x: 0,
-            y: head,
+            y: 0,
             width: this.width,
-            height: (this.height - head),
+            height: this.height,
         };
 
         this.assets = Assets.getAssets('skeleton');
@@ -29,6 +27,11 @@ export class Monster extends Creature {
     }
 
     tick(dt) {
+        if (this.x < (-this.width * 3)) {
+            // we've gone off the left side of the screen so destroy self
+            this.handler.getEntityManager().removeEntity(this);
+        }
+
         this.xMove = -this.speed * dt;
 
         this.move();

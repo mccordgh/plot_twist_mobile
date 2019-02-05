@@ -44,6 +44,7 @@ export class EntityManager {
         );
 
         this.entities.splice(index, 1);
+        entity = undefined;
       }
 
     mouseClick(data) {
