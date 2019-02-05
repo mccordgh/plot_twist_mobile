@@ -26,5 +26,7 @@ cursor.pointer = cursor.sheet.crop(0, 0, 28, 32);
 const skeleton = new Assets('skeleton', `${gameConstants.BASE_PATH}src/resources/single_skeleton.png`);
 skeleton.skeleton = skeleton.sheet.crop(0, 0, 32, 64);
 
+// const walnut = new Assets()
+
 const house = new Assets('house', `${gameConstants.BASE_PATH}src/resources/single_house.png`);
 house.house = house.sheet.crop(0, 0, 100, 368);

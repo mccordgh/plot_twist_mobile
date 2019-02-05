@@ -19,6 +19,10 @@ Possible issue: Billionaire "Mr. Smarty Pants" ideology is kinda dead right now.
 Similar to feed the world, but instead of peasants, you're feeding your pets their appropriate foodstuffs. 
 Possible issue: leading people to believe certain pets can safely eat many different kinds of foods (ex: a dog eating chocolate). Could be very un-educational
 
+### Retired Scientist
+Used to be a weapons manufacturer/powerful Wizard. After retirement, you took the path of peace and decided to took up farming. A nearby siege has left the army famished. The soldiers are hungry and decide to turn to your farm for sustenance. You must quell the invaders by feeding (or killing) them. 
+Once they are fed, they retreat back to camp.
+
 ## Mechanics
 Similar map style to Plants vs. Zombies, but mechanically and flavor-fully very different.
 
