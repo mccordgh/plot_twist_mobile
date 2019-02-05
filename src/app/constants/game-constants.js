@@ -12,7 +12,7 @@ export default {
 
     CREATURE_SPEED: 100,
 
-    SPATIAL_GRID_SIZE: 96,
+    SPATIAL_GRID_SIZE: 64,
 
     TYPES: {
         MONSTER: 'monster',

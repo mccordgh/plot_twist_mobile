@@ -19,7 +19,7 @@ export class World {
         this.spatialGrid = new SpatialGrid(
             gameConstants.GAME_WIDTH,
             gameConstants.GAME_HEIGHT,
-            64
+            gameConstants.SPATIAL_GRID_SIZE,
         );
     }
 
