@@ -1,6 +1,8 @@
 import gameConstants from "../../constants/game-constants";
 import { Rectangle } from './collision/rectangle';
 
+const doesNotCollide = [gameConstants.TYPES.GARDEN, gameConstants.TYPES.PLOT, gameConstants.TYPES.LANE];
+
 export class Entity {
     constructor(handler, x, y) {
         this.handler = handler;
@@ -20,6 +22,7 @@ export class Entity {
 
     checkEntityCollisions(xOffset, yOffset) {
         let candidates =  this.handler.getWorld().getSpatialGrid().retrieve(new Rectangle(this.x + this.bounds.x, this.y + this.bounds.y, this.bounds.width, this.bounds.height), this);
+        candidates = candidates.filter(candidate => !doesNotCollide.includes(candidate.type));
 
         for(let i = 0; i < candidates.length; i++) {
             let entity = candidates[i];

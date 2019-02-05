@@ -12,7 +12,7 @@ export class  Hero extends Creature {
         this.y = y;
         this.width = 32;
         this.height = 64;
-        this.health = 75;
+        this.health = 50;
         this.baseAttack = 4;
 
         this.bounds = {

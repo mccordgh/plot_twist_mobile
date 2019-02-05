@@ -10,8 +10,16 @@ export class HeroManager {
         const lanes = this.handler.getEntityManager().getEntitiesByType(gameConstants.TYPES.LANE);
         const lane = gameConstants.rndIndex(lanes);
 
+        this.createHero(150, lane.y)
+    }
+
+    createHero(x, y) {
         this.handler.getEntityManager().addEntity(
-            new Hero(this.handler, 150, lane.y),
+            new Hero(this.handler, x, y),
         );
+    }
+
+    spawnHeroAt(x, y) {
+        this.createHero(x, y);
     }
 }

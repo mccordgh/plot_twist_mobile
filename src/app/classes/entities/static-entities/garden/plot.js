@@ -7,6 +7,8 @@ export class Plot extends StaticEntity {
 
         this.height = gameConstants.SPRITE_HEIGHT;
         this.width = gameConstants.SPRITE_WIDTH;
+
+        this.type = gameConstants.TYPES.PLOT;
     }
 
     tick() {
@@ -16,5 +18,10 @@ export class Plot extends StaticEntity {
     render(graphics) {
         graphics.fillStyle = 'pink';
         graphics.fillRect(this.x, this.y, this.width, this.height);
+
+        /* PRINTS X AND Y COORDS */
+        // graphics.drawText(this.x, this.x + 8, this.y + 20, 'black', 20);
+        // graphics.drawText(this.y, this.x + 8, this.y + 50, 'black', 20);
+        /* PRINTS X AND Y COORDS */
     }
 }

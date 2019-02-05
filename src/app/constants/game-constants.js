@@ -19,7 +19,11 @@ export default {
         HOUSE: 'house',
         LANE: 'lane',
         HERO: 'hero',
+        PLOT: 'plot',
+        GARDEN: 'garden',
     },
+
+    FINGER_WIDTH: 16,
 
     rndIndex: (arr) => arr[Math.floor(Math.random() * (arr.length))],
 

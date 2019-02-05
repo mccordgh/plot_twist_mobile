@@ -30,7 +30,7 @@ export class World {
 
             // if (entityCount < 20) {
                 this.monsterManager.spawnMonster();
-                this.heroManager.spawnHero();
+                // this.heroManager.spawnHero();
 
                 // entityCount += 2;
             // }
