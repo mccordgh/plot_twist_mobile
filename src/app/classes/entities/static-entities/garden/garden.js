@@ -39,14 +39,18 @@ export class Garden extends StaticEntity {
         return garden;
     }
 
-    wasClickedAt(x, y) {
+    wasClickedAt(x, y, activeUi) {
+        if (!activeUi) {
+            return;
+        }
+
         const plot = this.findPlotAt(x, y);
 
         if (!plot) {
             return;
         }
 
-        this.handler.getHeroManager().spawnHeroAt(plot.x, plot.y);
+        activeUi.activeAction(plot);
     }
 
     findPlotAt(x, y) {

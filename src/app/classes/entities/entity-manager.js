@@ -2,7 +2,10 @@ import { PlayerCursor } from '../input/player-cursor';
 import { Rectangle } from './collision/rectangle';
 import gameConstants from '../../constants/game-constants';
 
-const clickableTypes = [gameConstants.TYPES.GARDEN, gameConstants.TYPES.HOUSE];
+const clickableTypes = [
+    gameConstants.TYPES.GARDEN,
+    gameConstants.TYPES.UI
+];
 
 export class EntityManager {
     constructor(handler) {
@@ -54,7 +57,7 @@ export class EntityManager {
 
         this.entities.splice(index, 1);
         entity = undefined;
-      }
+    }
 
     findClickableEntityAt(x, y) {
         const fingerRectangle = new Rectangle(
@@ -73,15 +76,21 @@ export class EntityManager {
         return clickableEntities;
     }
 
+    findActiveUi() {
+        return this.getEntitiesByType(gameConstants.TYPES.UI).find(ui => ui.active);
+    }
+
     mouseClick(data) {
+        let activeUi = this.findActiveUi();
+
         const { x, y } = data;
         const clicked = this.findClickableEntityAt(x, y);
 
         if (!clicked) {
-            return ;
+            return;
         }
 
-        clicked.wasClickedAt(x, y);
+        clicked.wasClickedAt(x, y, activeUi);
     }
 
     mouseMove(data) {

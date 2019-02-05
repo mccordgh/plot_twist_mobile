@@ -3,7 +3,7 @@ import { Creature } from '../creature';
 
 import gameConstants from '../../../../constants/game-constants';
 
-export class  Hero extends Creature {
+export class Hero extends Creature {
     constructor(handler, x, y) {
         super(handler, x, y);
 

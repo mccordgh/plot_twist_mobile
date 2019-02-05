@@ -21,6 +21,7 @@ export default {
         HERO: 'hero',
         PLOT: 'plot',
         GARDEN: 'garden',
+        UI: 'ui',
     },
 
     FINGER_WIDTH: 16,

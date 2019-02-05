@@ -4,6 +4,7 @@ import { Garden } from '../entities/static-entities/garden/garden';
 import { Monster } from '../entities/creatures/monsters/monster';
 import gameConstants from '../../constants/game-constants';
 import { SpatialGrid } from '../entities/collision/spatial-grid';
+import { UiEntity } from '../entities/ui/ui-entity';
 
 let counter = 0;
 // let entityCount = 0;
@@ -60,6 +61,11 @@ export class World {
 
         this.entityManager.addEntity(new FarmHouse(this.handler, 0, ySpawn));
         this.entityManager.addEntity(Garden.create(this.handler, 101, ySpawn));
+
+        const button = { x: 101, width: 160, height: 80 };
+        this.entityManager.addEntity(new UiEntity(
+            this.handler, button.x, gameConstants.GAME_HEIGHT - button.height - 6, button.width, button.height,
+        ));
     }
 
     getSpatialGrid() {
