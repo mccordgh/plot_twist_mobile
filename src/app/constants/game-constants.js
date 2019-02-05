@@ -7,8 +7,8 @@ export default {
     GAME_HEIGHT: 551,
     GAME_WIDTH: 980,
 
-    SPRITE_HEIGHT: 80,
-    SPRITE_WIDTH: 80,
+    PLOT_HEIGHT: 80,
+    PLOT_WIDTH: 80,
 
     CREATURE_SPEED: 100,
 

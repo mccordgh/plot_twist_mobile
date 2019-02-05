@@ -15,8 +15,8 @@ export class Garden extends StaticEntity {
             vertical: 32,
         };
 
-        this.height = (gameConstants.SPRITE_HEIGHT * this.columns) + (this.padding.vertical * (this.columns + 1));
-        this.width = (gameConstants.SPRITE_WIDTH * this.rows) + (this.padding.horizontal * (this.rows + 1));
+        this.height = (gameConstants.PLOT_HEIGHT * this.columns) + (this.padding.vertical * (this.columns + 1));
+        this.width = (gameConstants.PLOT_WIDTH * this.rows) + (this.padding.horizontal * (this.rows + 1));
 
         this.bounds = {
             x: this.x,
@@ -83,7 +83,7 @@ export class Garden extends StaticEntity {
             const lane = new Lane(
                 this.handler,
                 this.x + this.width,
-                this.y + (this.padding.vertical * (y + 1)) + (gameConstants.SPRITE_HEIGHT * y)
+                this.y + (this.padding.vertical * (y + 1)) + (gameConstants.PLOT_HEIGHT * y)
             )
 
             this.handler.getEntityManager().addEntity(lane);
@@ -97,8 +97,8 @@ export class Garden extends StaticEntity {
             for (let x = 0; x < this.rows; x += 1) {
                 this.plots[y][x] = new Plot(
                     this.handler,
-                    (this.x + (this.padding.horizontal * (x + 1))) + (gameConstants.SPRITE_WIDTH * x),
-                    (this.y + (this.padding.vertical * (y + 1))) + (gameConstants.SPRITE_HEIGHT * y),
+                    (this.x + (this.padding.horizontal * (x + 1))) + (gameConstants.PLOT_WIDTH * x),
+                    (this.y + (this.padding.vertical * (y + 1))) + (gameConstants.PLOT_HEIGHT * y),
                 );
             }
         }

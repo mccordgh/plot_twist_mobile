@@ -6,7 +6,7 @@ export class Lane extends StaticEntity {
         super(handler, x, y);
 
         this.width = 480;
-        this.height = gameConstants.SPRITE_HEIGHT;
+        this.height = gameConstants.PLOT_HEIGHT;
 
         this.type = gameConstants.TYPES.LANE;
     }

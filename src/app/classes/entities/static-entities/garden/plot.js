@@ -5,8 +5,8 @@ export class Plot extends StaticEntity {
     constructor(handler, x, y) {
         super(handler, x, y);
 
-        this.height = gameConstants.SPRITE_HEIGHT;
-        this.width = gameConstants.SPRITE_WIDTH;
+        this.height = gameConstants.PLOT_HEIGHT;
+        this.width = gameConstants.PLOT_WIDTH;
 
         this.type = gameConstants.TYPES.PLOT;
     }

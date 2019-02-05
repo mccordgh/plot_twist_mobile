@@ -11,8 +11,6 @@ export class Assets {
         assets[name] = this;
         this.name = name;
         this.path = path;
-        // this.height = gameConstants.SPRITE_HEIGHT
-        // this.width = gameConstants.SPRITE_WIDTH;
         this.sheet = new SpriteSheet(ImageLoader.loadImage(this.path));
     }
 

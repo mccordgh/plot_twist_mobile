@@ -8,8 +8,7 @@ export class Entity {
         this.handler = handler;
         this.x = x;
         this.y = y;
-        this.width = gameConstants.SPRITE_WIDTH;
-        this.height = gameConstants.SPRITE_HEIGHT
+
         this.bounds = new Rectangle(0, 0, this.width, this.height);
     }
 
