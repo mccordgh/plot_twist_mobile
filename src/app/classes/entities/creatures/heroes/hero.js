@@ -28,10 +28,10 @@ export class  Hero extends Creature {
     }
 
     tick(dt) {
-        // if (this.x < (-this.width * 3)) {
-        //     // we've gone off the left side of the screen so destroy self
-        //     this.handler.getEntityManager().removeEntity(this);
-        // }
+        if (this.x > gameConstants.GAME_WIDTH + (this.width * 3)) {
+            // we've gone off the left side of the screen so destroy self
+            this.handler.getEntityManager().removeEntity(this);
+        }
 
         this.xMove = this.speed * dt;
 
