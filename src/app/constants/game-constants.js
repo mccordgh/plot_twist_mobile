@@ -18,6 +18,7 @@ export default {
         MONSTER: 'monster',
         HOUSE: 'house',
         LANE: 'lane',
+        HERO: 'hero',
     },
 
     rndIndex: (arr) => arr[Math.floor(Math.random() * (arr.length))],

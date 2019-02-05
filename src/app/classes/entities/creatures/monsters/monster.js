@@ -12,7 +12,7 @@ export class Monster extends Creature {
         this.y = y;
         this.width = 32;
         this.height = 64;
-        this.damage = 4;
+        this.baseAttack = 4;
 
         this.bounds = {
             x: 0,

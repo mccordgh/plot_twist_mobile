@@ -7,6 +7,7 @@ export class Creature extends Entity {
     constructor(handler, x, y, width, height) {
         super(handler, x, y, width, height);
 
+        this.health = 50;
         this.speed = gameConstants.CREATURE_SPEED;
         this.xMove = 0;
         this.yMove = 0;
@@ -26,6 +27,10 @@ export class Creature extends Entity {
 
         this.handler.getWorld().getSpatialGrid().insert(new Rectangle(this.x + this.bounds.x, this.y + this.bounds.y, this.bounds.width, this.bounds.height), this);
         }
+    }
+
+    getAttackDamage() {
+        return this.baseAttack;
     }
 
     // moveX() {

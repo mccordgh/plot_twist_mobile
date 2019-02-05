@@ -8,8 +8,4 @@ export class StaticEntity extends Entity {
             x: 0, y: 0, width: 0, height: 0,
         };
     }
-
-    takeDamage(amount) {
-        this.health -= amount;
-    }
 }

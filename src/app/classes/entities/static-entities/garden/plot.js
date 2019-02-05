@@ -14,7 +14,6 @@ export class Plot extends StaticEntity {
     }
 
     render(graphics) {
-        // console.log(this.x, this.y);
         graphics.fillStyle = 'pink';
         graphics.fillRect(this.x, this.y, this.width, this.height);
     }

@@ -34,6 +34,10 @@ export class Entity {
         return false;
     }
 
+    takeDamageFrom(entity) {
+        this.health -= entity.getAttackDamage();
+    }
+
     checkForCollisionEvents(e1, e2) {
         // if player and guard bump
         if (this.checkCollidingTypes(e1, e2, gameConstants.TYPES.HOUSE, gameConstants.TYPES.MONSTER)) {
@@ -42,6 +46,13 @@ export class Entity {
 
             this.monsterHouseCollision(monster, house);
         }
+
+        if (this.checkCollidingTypes(e1, e2, gameConstants.TYPES.HERO, gameConstants.TYPES.MONSTER)) {
+            const hero = e1.type === gameConstants.TYPES.HERO ? e1 : e2;
+            const monster = e1.type === gameConstants.TYPES.MONSTER ? e1 : e2;
+
+            this.monsterHeroCollision(monster, hero);
+        }
     }
 
     checkCollidingTypes(e1, e2, type1, type2) {
@@ -49,6 +60,11 @@ export class Entity {
     }
 
     monsterHouseCollision(monster, house) {
-        house.health -= monster.damage;
+        house.takeDamageFrom(monster);
+    }
+
+    monsterHeroCollision(monster, hero) {
+        monster.takeDamageFrom(hero);
+        hero.takeDamageFrom(monster);
     }
 }

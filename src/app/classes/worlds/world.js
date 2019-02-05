@@ -6,12 +6,14 @@ import gameConstants from '../../constants/game-constants';
 import { SpatialGrid } from '../entities/collision/spatial-grid';
 
 let counter = 0;
+// let entityCount = 0;
 
 export class World {
     constructor(handler) {
         this.handler = handler;
         this.entityManager = handler.createEntityManager();
         this.monsterManager = handler.createMonsterManager();
+        this.heroManager = handler.createHeroManager();
 
         this.spatialGrid = new SpatialGrid(
             gameConstants.GAME_WIDTH,
@@ -26,7 +28,12 @@ export class World {
         if (counter >= (gameConstants.FPS / 2)) {
             counter = 0;
 
-            this.monsterManager.spawnMonster();
+            // if (entityCount < 20) {
+                this.monsterManager.spawnMonster();
+                this.heroManager.spawnHero();
+
+                // entityCount += 2;
+            // }
         }
 
         this.entityManager.tick(deltaTime);
