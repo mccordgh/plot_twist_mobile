@@ -20,8 +20,10 @@ Similar to feed the world, but instead of peasants, you're feeding your pets the
 Possible issue: leading people to believe certain pets can safely eat many different kinds of foods (ex: a dog eating chocolate). Could be very un-educational
 
 ### Retired Scientist
+(Most viable as of 2/8)
 Used to be a weapons manufacturer/powerful Wizard. After retirement, you took the path of peace and decided to took up farming. A nearby siege has left the army famished. The soldiers are hungry and decide to turn to your farm for sustenance. You must quell the invaders by feeding (or killing) them. 
-Once they are fed, they retreat back to camp.
+Once the soldiers are fed, they retreat back to camp. They leave behind battlements and trinkets for compensation.
+
 
 
 ## Mechanics
