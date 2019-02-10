@@ -5,6 +5,13 @@
 ##General Premise
 Player grows foods to fend off invaders. Front-line foods keep back-line foods safe from invaders. Foods should evolve and improve/gain abilities over the course of the game.
 
+### Retired Scientist
+(Most viable as of 2/8)
+Used to be a weapons manufacturer/powerful Wizard. After retirement, you took the path of peace and decided to took up farming. A nearby siege has left the army famished. The soldiers are hungry and decide to turn to your farm for sustenance. You must quell the invaders by feeding (or killing) them. 
+Once the soldiers are fed, they retreat back to camp. They leave behind battlements and trinkets for compensation.
+
+
+
 ### Monsanto/GMO
 Player is a large farm/agriculture company (i.e. Monsanto). You grow plants that defend your factory/warehouse/etc. from competing companies.
 This is done by raising sentient food stuffs to protect your precious experiments. In the beginning, you're merely cross-breeding and using 'traditional' techniques to improve your crops.
@@ -19,10 +26,6 @@ Possible issue: Billionaire "Mr. Smarty Pants" ideology is kinda dead right now.
 Similar to feed the world, but instead of peasants, you're feeding your pets their appropriate foodstuffs. 
 Possible issue: leading people to believe certain pets can safely eat many different kinds of foods (ex: a dog eating chocolate). Could be very un-educational
 
-### Retired Scientist
-(Most viable as of 2/8)
-Used to be a weapons manufacturer/powerful Wizard. After retirement, you took the path of peace and decided to took up farming. A nearby siege has left the army famished. The soldiers are hungry and decide to turn to your farm for sustenance. You must quell the invaders by feeding (or killing) them. 
-Once the soldiers are fed, they retreat back to camp. They leave behind battlements and trinkets for compensation.
 
 
 
