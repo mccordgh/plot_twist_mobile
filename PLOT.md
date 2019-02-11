@@ -27,8 +27,6 @@ Similar to feed the world, but instead of peasants, you're feeding your pets the
 Possible issue: leading people to believe certain pets can safely eat many different kinds of foods (ex: a dog eating chocolate). Could be very un-educational
 
 
-
-
 ## Mechanics
 Similar map style to Plants vs. Zombies, but mechanically and flavor-fully very different.
 
