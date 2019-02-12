@@ -5,15 +5,34 @@ import { UiEntity } from './ui-entity';
 export class UiManager {
     constructor(handler) {
         this.handler = handler;
+
+        this.styles = {
+            height: 80,
+            width: 160,
+        };
     }
 
     createHeroButtonsFromHeroes(heroes) {
-        const button = { x: 101, width: 160, height: 80 };
 
-        heroes.forEach((hero) => {
+        heroes.forEach((hero, index) => {
             this.handler.getEntityManager().addEntity(new UiEntity(
-                this.handler, button.x, gameConstants.GAME_HEIGHT - button.height - 6, button.width, button.height, hero
+                this.handler,
+                index * this.styles.width,
+                gameConstants.GAME_HEIGHT - this.styles.height,
+                this.styles.width,
+                this.styles.height,
+                hero,
             ));
         })
+    }
+
+    toggleElement(element) {
+        const uiElements = this.handler.getEntityManager().getEntitiesByType(gameConstants.TYPES.UI);
+
+        uiElements.forEach((uiElement) => {
+            uiElement.active = false;
+        })
+
+        element.active = true;
     }
 }
