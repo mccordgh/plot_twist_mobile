@@ -12,16 +12,15 @@ export class UiManager {
         };
     }
 
-    createHeroButtonsFromHeroes(heroes) {
-
-        heroes.forEach((hero, index) => {
+    createButtonsFromSeeds(seeds) {
+        seeds.forEach((seed, index) => {
             this.handler.getEntityManager().addEntity(new UiEntity(
                 this.handler,
                 index * this.styles.width,
                 gameConstants.GAME_HEIGHT - this.styles.height,
                 this.styles.width,
                 this.styles.height,
-                hero,
+                seed,
             ));
         })
     }

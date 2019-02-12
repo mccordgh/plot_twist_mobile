@@ -6,12 +6,12 @@ export class MonsterManager {
         this.handler = handler;
     }
 
-    spawnMonster() {
+    spawnMonster(monster = Skeleton) {
         const lanes = this.handler.getEntityManager().getEntitiesByType(gameConstants.TYPES.LANE);
         const lane = gameConstants.rndIndex(lanes);
 
         this.handler.getEntityManager().addEntity(
-            new Skeleton(this.handler, gameConstants.GAME_WIDTH, lane.y),
+            new monster(this.handler, gameConstants.GAME_WIDTH, lane.y),
         );
     }
 }

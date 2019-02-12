@@ -3,8 +3,8 @@ import { FarmHouse } from '../entities/static-entities/farm-house';
 import { Garden } from '../entities/static-entities/garden/garden';
 import gameConstants from '../../constants/game-constants';
 import { SpatialGrid } from '../entities/collision/spatial-grid';
-import { Walnut } from '../entities/creatures/heroes/walnut';
-import { Potatank } from '../entities/creatures/heroes/potato';
+import { WalnutSeed } from '../entities/static-entities/seeds/walnut-seed';
+import { PotatoSeed } from '../entities/static-entities/seeds/potato-seed';
 
 let counter = 0;
 
@@ -14,6 +14,7 @@ export class WorldOne {
         this.entityManager = handler.createEntityManager();
         this.monsterManager = handler.createMonsterManager();
         this.heroManager = handler.createHeroManager();
+        this.seedManager = handler.createSeedManager();
         this.uiManager = handler.createUiManager();
 
         this.spatialGrid = new SpatialGrid(
@@ -30,15 +31,15 @@ export class WorldOne {
         this.entityManager.addEntity(Garden.create(this.handler, 101, ySpawn));
 
         //TODO: Make Player object to track stats/upgrades/heroes/etc
-        const availableHeros = [Walnut, Potatank];
+        const availableSeeds = [WalnutSeed, PotatoSeed];
 
-        this.uiManager.createHeroButtonsFromHeroes(availableHeros);
+        this.uiManager.createButtonsFromSeeds(availableSeeds);
     }
 
     tick(deltaTime) {
         counter++;
 
-        if (counter >= (gameConstants.FPS * 2)) {
+        if (counter >= (gameConstants.FPS)) {
             counter = 0;
 
             this.monsterManager.spawnMonster();

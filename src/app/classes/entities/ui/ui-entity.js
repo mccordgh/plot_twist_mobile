@@ -3,7 +3,7 @@ import gameConstants from '../../../constants/game-constants';
 
 
 export class UiEntity extends Entity {
-    constructor(handler, x, y, width, height, hero) {
+    constructor(handler, x, y, width, height, seed) {
         super(handler, x, y, width, height);
 
         this.handler = handler;
@@ -11,7 +11,7 @@ export class UiEntity extends Entity {
         this.y = y;
         this.width = width;
         this.height = height;
-        this.hero = hero;
+        this.seed = seed;
 
         this.bounds = {
             x: 0,
@@ -20,14 +20,14 @@ export class UiEntity extends Entity {
             height: this.height,
         };
 
-        this.text = hero.getDisplayName();
+        this.text = this.seed.getDisplayName();
         this.active = false;
 
         this.type = gameConstants.TYPES.UI;
     }
 
     activeAction(plot) {
-        this.handler.getHeroManager().spawnHeroAt(this.hero, plot.x, plot.y);
+        this.handler.getSeedManager().spawnSeedAt(this.seed, plot.x, plot.y);
     }
 
     tick(dt) {}
