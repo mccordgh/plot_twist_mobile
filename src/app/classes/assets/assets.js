@@ -31,6 +31,9 @@ skeleton.skeleton = skeleton.sheet.crop(0, 0, 32, 64);
 const walnut = new Assets('walnut', `${path}/walnut_dude.png`);
 walnut.walnut = walnut.sheet.crop(0, 0, 32, 64);
 
+const potatank = new Assets('potatank', `${path}/potatank.png`);
+potatank.potatank = potatank.sheet.crop(0, 0, 32, 64);
+
 /* HOUSE */
 const house = new Assets('house', `${path}/single_house.png`);
 house.house = house.sheet.crop(0, 0, 100, 368);

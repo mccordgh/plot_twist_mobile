@@ -4,6 +4,7 @@ import { Garden } from '../entities/static-entities/garden/garden';
 import gameConstants from '../../constants/game-constants';
 import { SpatialGrid } from '../entities/collision/spatial-grid';
 import { Walnut } from '../entities/creatures/heroes/walnut';
+import { Potatank } from '../entities/creatures/heroes/potato';
 
 let counter = 0;
 
@@ -20,6 +21,18 @@ export class WorldOne {
             gameConstants.GAME_HEIGHT,
             gameConstants.SPATIAL_GRID_SIZE,
         );
+    }
+
+    loadEntities() {
+        const ySpawn = 90;
+
+        this.entityManager.addEntity(new FarmHouse(this.handler, 0, ySpawn));
+        this.entityManager.addEntity(Garden.create(this.handler, 101, ySpawn));
+
+        //TODO: Make Player object to track stats/upgrades/heroes/etc
+        const availableHeros = [Walnut, Potatank];
+
+        this.uiManager.createHeroButtonsFromHeroes(availableHeros);
     }
 
     tick(deltaTime) {
@@ -50,17 +63,6 @@ export class WorldOne {
         graphics.fillRect(0, 0, gameConstants.GAME_WIDTH, gameConstants.GAME_HEIGHT);
     }
 
-    loadEntities() {
-        const ySpawn = 90;
-
-        this.entityManager.addEntity(new FarmHouse(this.handler, 0, ySpawn));
-        this.entityManager.addEntity(Garden.create(this.handler, 101, ySpawn));
-
-        //TODO: Make Player object to track stats/upgrades/heroes/etc
-        const availableHeros = [Walnut];
-
-        this.uiManager.createHeroButtonsFromHeroes(availableHeros);
-    }
 
     getSpatialGrid() {
         return this.spatialGrid;
