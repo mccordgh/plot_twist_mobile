@@ -2,7 +2,7 @@ import { MouseManager } from "../input/mouse-manager";
 import { GraphicsManager } from "../graphics/graphics-manager";
 import { EntityManager } from '../entities/entity-manager';
 import { StateManager } from '../states/state-manager';
-import { World } from '../worlds/world';
+import { WorldOne } from '../worlds/world-one';
 import { MonsterManager } from '../entities/creatures/monsters/monster-manager';
 import { HeroManager } from '../entities/creatures/heroes/hero-manager';
 import { UiManager } from '../entities/ui/ui-manager';
@@ -77,7 +77,7 @@ export class ManagerHandler {
     }
 
     createWorld() {
-        return this.world = new World(this);
+        return this.world = new WorldOne(this);
     }
 
     event(type, data) {

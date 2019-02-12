@@ -7,7 +7,7 @@ import { Walnut } from '../entities/creatures/heroes/walnut';
 
 let counter = 0;
 
-export class World {
+export class WorldOne {
     constructor(handler) {
         this.handler = handler;
         this.entityManager = handler.createEntityManager();
