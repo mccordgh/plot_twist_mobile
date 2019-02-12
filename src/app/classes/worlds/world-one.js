@@ -38,7 +38,7 @@ export class WorldOne {
     tick(deltaTime) {
         counter++;
 
-        if (counter >= (gameConstants.FPS / 2)) {
+        if (counter >= (gameConstants.FPS * 2)) {
             counter = 0;
 
             this.monsterManager.spawnMonster();

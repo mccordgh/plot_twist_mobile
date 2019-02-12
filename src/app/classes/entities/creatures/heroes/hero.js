@@ -14,10 +14,11 @@ export class Hero extends Creature {
         this.health = 50;
         this.baseAttack = 4;
 
+        const boundsX = Math.floor(this.width / 4);
         this.bounds = {
-            x: 0,
+            x: this.width - boundsX,
             y: 0,
-            width: this.width,
+            width: boundsX,
             height: this.height,
         };
 

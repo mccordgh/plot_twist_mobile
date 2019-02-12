@@ -1,5 +1,5 @@
 import gameConstants from "../../../../constants/game-constants";
-import { Monster } from './monster';
+import { Skeleton } from './skeleton';
 
 export class MonsterManager {
     constructor(handler) {
@@ -11,7 +11,7 @@ export class MonsterManager {
         const lane = gameConstants.rndIndex(lanes);
 
         this.handler.getEntityManager().addEntity(
-            new Monster(this.handler, gameConstants.GAME_WIDTH, lane.y),
+            new Skeleton(this.handler, gameConstants.GAME_WIDTH, lane.y),
         );
     }
 }
