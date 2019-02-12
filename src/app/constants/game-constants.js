@@ -10,7 +10,7 @@ export default {
     PLOT_HEIGHT: 80,
     PLOT_WIDTH: 80,
 
-    CREATURE_SPEED: 100,
+    CREATURE_SPEED: 40,
 
     SPATIAL_GRID_SIZE: 64,
 

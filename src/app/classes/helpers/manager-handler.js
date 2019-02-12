@@ -6,6 +6,7 @@ import { WorldOne } from '../worlds/world-one';
 import { MonsterManager } from '../entities/creatures/monsters/monster-manager';
 import { HeroManager } from '../entities/creatures/heroes/hero-manager';
 import {UiManager} from "../entities/ui/ui-manager";
+import {SeedManager} from "../entities/static-entities/seeds/seed-manager";
 
 export class ManagerHandler {
     constructor(game) {
@@ -16,12 +17,17 @@ export class ManagerHandler {
         this.monsterManager = null;
         this.mouseManager = null;
         this.stateManager = null;
+        this.seedManager = null;
         this.uiManager = null;
         this.world = null;
     }
 
     getEntityManager() {
         return this.entityManager;
+    }
+
+    getSeedManager(){
+        return this.seedManager;
     }
 
     getGame() {
@@ -66,6 +72,10 @@ export class ManagerHandler {
 
     createHeroManager() {
         return this.heroManager = new HeroManager(this);
+    }
+
+    createSeedManager(){
+        return this.seedManager = new SeedManager(this);
     }
 
     createStateManager() {

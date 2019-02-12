@@ -1,42 +1,29 @@
 import gameConstants from '../../../../constants/game-constants';
 import {Creature} from "../creature";
+import {StaticEntity} from "../static-entity";
 
-export class Hero extends Creature {
+export class Seed extends StaticEntity {
   constructor(handler, x, y) {
     super(handler, x, y);
 
     this.handler = handler;
     this.x = x;
     this.y = y;
-    this.width = 32;
-    this.height = 64;
-    this.health = 50;
-    this.baseAttack = 4;
+    this.width = gameConstants.PLOT_WIDTH;
+    this.height = gameConstants.PLOT_HEIGHT;
 
-    const boundsX = Math.floor(this.width/4)
-    this.bounds = {
-      x: this.width-boundsX,
-      y: 0,
-      width: boundsX,
-      height: this.height,
-    };
-
-    this.type = gameConstants.TYPES.HERO;
-  }
-
-  static getDisplayName(){
-    throw new Error("Hero must have a getDisplayName() method!")
+    this.gestationLength = gameConstants.FPS*2;
+    this.gestationCounter = 0;
   }
 
   tick(dt) {
-    if (this.x > gameConstants.GAME_WIDTH + (this.width * 3)) {
-      // we've gone off the right side of the screen so destroy self
+    // gestation period counting
+    this.gestationCounter += 1;
+
+    if(this.gestationCounter >= this.gestationLength){
+      this.handler.getHeroManager().spawnHeroAt(this.hero, this.x, this.y);
       this.handler.getEntityManager().removeEntity(this);
     }
-
-    this.xMove = this.speed * dt;
-
-    this.move();
   }
 
   render(graphics) {

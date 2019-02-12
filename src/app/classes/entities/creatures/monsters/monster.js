@@ -14,14 +14,14 @@ export class Monster extends Creature {
         this.height = 64;
         this.baseAttack = 4;
 
+        const boundsX = Math.floor(this.width/4);
+
         this.bounds = {
             x: 0,
             y: 0,
-            width: this.width,
+            width: boundsX,
             height: this.height,
         };
-
-        this.assets = Assets.getAssets('skeleton');
 
         this.type = gameConstants.TYPES.MONSTER;
     }
@@ -38,7 +38,7 @@ export class Monster extends Creature {
     }
 
     render(graphics) {
-        graphics.drawSprite(this.assets.skeleton, this.x, this.y, this.height, this.width);
+        graphics.drawSprite(this.assets, this.x, this.y, this.height, this.width);
         // graphics.fillStyle = 'purple';
         // graphics.fillRect(this.x, this.y, this.width, this.height);
 

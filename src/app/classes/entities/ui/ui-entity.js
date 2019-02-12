@@ -27,7 +27,8 @@ export class UiEntity extends Entity {
     }
 
     activeAction(plot) {
-        this.handler.getHeroManager().spawnHeroAt(this.hero, plot.x, plot.y);
+        this.handler.getSeedManager().spawnSeedAt(this.seed, plot.x, plot.y);
+        // this.handler.getHeroManager().spawnHeroAt(this.hero, plot.x, plot.y);
     }
 
     tick(dt) {

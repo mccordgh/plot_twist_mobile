@@ -15,6 +15,7 @@ export class WorldOne {
         this.monsterManager = handler.createMonsterManager();
         this.heroManager = handler.createHeroManager();
         this.uiManager = handler.createUiManager();
+        this.seedManager = handler.createSeedManager();
 
         this.spatialGrid = new SpatialGrid(
             gameConstants.GAME_WIDTH,
@@ -63,10 +64,10 @@ export class WorldOne {
         this.entityManager.addEntity(Garden.create(this.handler, 101, ySpawn));
 
         // TODO: Make Playter object to track stats/upgrades/heroes/etc
-        const availableHeroes = [Walnut, Potatank]
+        const availableSeeds = [Walnut]
         // const button = { x: 101, width: 160, height: 80 };
 
-      this.uiManager.createHeroButtonsFromHeroes(availableHeroes);
+      this.uiManager.createSeedButtonsFromSeeds(availableSeeds);
 
         // this.uiManager.createUiEntity(
         //   this.handler, button.x, gameConstants.GAME_HEIGHT - button.height - 6, button.width, button.height
