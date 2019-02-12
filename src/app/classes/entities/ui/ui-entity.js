@@ -4,14 +4,15 @@ import gameConstants from '../../../constants/game-constants';
 
 
 export class UiEntity extends Entity {
-    constructor(handler, x, y, width, height) {
-        super(handler, x, y, width, height);
+    constructor(handler, x, y, width, height, hero) {
+        super(handler, x, y, width, height, hero);
 
         this.handler = handler;
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
+        this.hero = hero;
 
         this.bounds = {
             x: 0,
@@ -20,7 +21,7 @@ export class UiEntity extends Entity {
             height: this.height,
         };
 
-        this.text = 'WALNUT';
+        this.text = hero.getDisplayName();
         this.active = false;
 
         // this.assets = Assets.getAssets('walnut');
@@ -29,7 +30,7 @@ export class UiEntity extends Entity {
     }
 
     activeAction(plot) {
-        this.handler.getHeroManager().spawnHeroAt(plot.x, plot.y);
+        this.handler.getHeroManager().spawnHeroAt(this.hero, plot.x, plot.y);
     }
 
     tick(dt) {

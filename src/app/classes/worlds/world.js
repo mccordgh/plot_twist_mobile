@@ -4,6 +4,7 @@ import { Garden } from '../entities/static-entities/garden/garden';
 import { Monster } from '../entities/creatures/monsters/monster';
 import gameConstants from '../../constants/game-constants';
 import { SpatialGrid } from '../entities/collision/spatial-grid';
+import {Walnut} from '../entities/creatures/heroes/walnut'
 import { UiEntity } from '../entities/ui/ui-entity';
 
 let counter = 0;
@@ -15,6 +16,7 @@ export class World {
         this.entityManager = handler.createEntityManager();
         this.monsterManager = handler.createMonsterManager();
         this.heroManager = handler.createHeroManager();
+        this.uiManager = handler.createUiManager();
 
         this.spatialGrid = new SpatialGrid(
             gameConstants.GAME_WIDTH,
@@ -62,10 +64,15 @@ export class World {
         this.entityManager.addEntity(new FarmHouse(this.handler, 0, ySpawn));
         this.entityManager.addEntity(Garden.create(this.handler, 101, ySpawn));
 
-        const button = { x: 101, width: 160, height: 80 };
-        this.entityManager.addEntity(new UiEntity(
-            this.handler, button.x, gameConstants.GAME_HEIGHT - button.height - 6, button.width, button.height,
-        ));
+        // TODO: Make Playter object to track stats/upgrades/heroes/etc
+        const availableHeroes = [Walnut]
+        // const button = { x: 101, width: 160, height: 80 };
+
+      this.uiManager.createHeroButtonsFromHeroes(availableHeroes);
+
+        // this.uiManager.createUiEntity(
+        //   this.handler, button.x, gameConstants.GAME_HEIGHT - button.height - 6, button.width, button.height
+        // );
     }
 
     getSpatialGrid() {

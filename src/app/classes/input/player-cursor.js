@@ -9,6 +9,6 @@ export class PlayerCursor {
     }
 
     render(graphics) {
-        graphics.drawSprite(this.assets.pointer, this.x, this.y);
+      graphics.drawSprite(this.assets.pointer, this.x, this.y);
     }
 }

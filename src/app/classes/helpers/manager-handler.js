@@ -5,6 +5,7 @@ import { StateManager } from '../states/state-manager';
 import { World } from '../worlds/world';
 import { MonsterManager } from '../entities/creatures/monsters/monster-manager';
 import { HeroManager } from '../entities/creatures/heroes/hero-manager';
+import {UiManager} from "../entities/ui/ui-manager";
 
 export class ManagerHandler {
     constructor(game) {
@@ -15,6 +16,7 @@ export class ManagerHandler {
         this.monsterManager = null;
         this.mouseManager = null;
         this.stateManager = null;
+        this.uiManager = null;
         this.world = null;
     }
 
@@ -36,6 +38,10 @@ export class ManagerHandler {
 
     getMouseManager() {
         return this.mouseManager;
+    }
+
+    getUiManager(){
+        return this.uiManager;
     }
 
     getWorld() {
@@ -68,6 +74,10 @@ export class ManagerHandler {
 
     createWorld() {
         return this.world = new World(this);
+    }
+
+    createUiManager(){
+        return this.uiManager = new UiManager(this);
     }
 
     event(type, data) {

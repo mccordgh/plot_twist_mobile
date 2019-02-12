@@ -13,13 +13,14 @@ export class HeroManager {
         this.createHero(150, lane.y)
     }
 
-    createHero(x, y) {
+    createHero(hero, x, y) {
+
         this.handler.getEntityManager().addEntity(
-            new Hero(this.handler, x, y),
+            new hero(this.handler, x, y),
         );
     }
 
-    spawnHeroAt(x, y) {
-        this.createHero(x, y);
+    spawnHeroAt(hero, x, y) {
+        this.createHero(hero, x, y);
     }
 }
