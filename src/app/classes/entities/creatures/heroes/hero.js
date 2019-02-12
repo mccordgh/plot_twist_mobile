@@ -1,4 +1,3 @@
-import { Assets } from '../../../assets/assets';
 import { Creature } from '../creature';
 
 import gameConstants from '../../../../constants/game-constants';
@@ -22,14 +21,16 @@ export class Hero extends Creature {
             height: this.height,
         };
 
-        this.assets = Assets.getAssets('walnut');
-
         this.type = gameConstants.TYPES.HERO;
+    }
+
+    static getDisplayName() {
+        throw new Error('Hero must have a "getDisplayName()" method!');
     }
 
     tick(dt) {
         if (this.x > gameConstants.GAME_WIDTH + (this.width * 3)) {
-            // we've gone off the left side of the screen so destroy self
+            // we've gone off the right side of the screen so destroy self
             this.handler.getEntityManager().removeEntity(this);
         }
 
@@ -39,9 +40,7 @@ export class Hero extends Creature {
     }
 
     render(graphics) {
-        graphics.drawSprite(this.assets.walnut, this.x, this.y, this.height, this.width);
-        // graphics.fillStyle = 'purple';
-        // graphics.fillRect(this.x, this.y, this.width, this.height);
+        graphics.drawSprite(this.assets, this.x, this.y, this.height, this.width);
 
         // ****** DRAW BOUNDING BOX
         // graphics.fillStyle = "purple";

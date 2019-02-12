@@ -15,6 +15,7 @@ export class World {
         this.entityManager = handler.createEntityManager();
         this.monsterManager = handler.createMonsterManager();
         this.heroManager = handler.createHeroManager();
+        this.uiManager = handler.createUiManager();
 
         this.spatialGrid = new SpatialGrid(
             gameConstants.GAME_WIDTH,
@@ -62,10 +63,19 @@ export class World {
         this.entityManager.addEntity(new FarmHouse(this.handler, 0, ySpawn));
         this.entityManager.addEntity(Garden.create(this.handler, 101, ySpawn));
 
-        const button = { x: 101, width: 160, height: 80 };
-        this.entityManager.addEntity(new UiEntity(
-            this.handler, button.x, gameConstants.GAME_HEIGHT - button.height - 6, button.width, button.height,
-        ));
+        //TODO: Make Player object to track stats/upgrades/heroes/etc
+        const availableHeros = [Walnut];
+
+        this.uiManager.createHeroButtonsFromHeroes(availableHeros);
+        //     gameConstants,
+        //     this.handler, button.x, gameConstants.GAME_HEIGHT - button.height - 6, button.width, button.height,
+        // );
+
+        // const button = { x: 101, width: 160, height: 80 };
+
+        // this.entityManager.addEntity(new UiEntity(
+            // this.handler, button.x, gameConstants.GAME_HEIGHT - button.height - 6, button.width, button.height,
+        // ));
     }
 
     getSpatialGrid() {
