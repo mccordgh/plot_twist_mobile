@@ -23,9 +23,6 @@ export class UiEntity extends Entity {
 
         this.text = hero.getDisplayName();
         this.active = false;
-
-        // this.assets = Assets.getAssets('walnut');
-
         this.type = gameConstants.TYPES.UI;
     }
 
@@ -34,14 +31,7 @@ export class UiEntity extends Entity {
     }
 
     tick(dt) {
-        // if (this.x > gameConstants.GAME_WIDTH + (this.width * 3)) {
-        //     // we've gone off the left side of the screen so destroy self
-        //     this.handler.getEntityManager().removeEntity(this);
-        // }
-
-        // this.xMove = this.speed * dt;
-
-        // this.move();
+        //
     }
 
     render(graphics) {
@@ -58,6 +48,6 @@ export class UiEntity extends Entity {
     }
 
     wasClickedAt(x, y) {
-        this.active = !this.active;
+        this.handler.getUiManager().toggleElement(this);
     }
 }

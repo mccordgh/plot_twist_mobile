@@ -1,16 +1,14 @@
-
 import { FarmHouse } from '../entities/static-entities/farm-house';
 import { Garden } from '../entities/static-entities/garden/garden';
-import { Monster } from '../entities/creatures/monsters/monster';
 import gameConstants from '../../constants/game-constants';
 import { SpatialGrid } from '../entities/collision/spatial-grid';
 import {Walnut} from '../entities/creatures/heroes/walnut'
-import { UiEntity } from '../entities/ui/ui-entity';
+import {Potatank} from "../entities/creatures/heroes/potato";
 
 let counter = 0;
 // let entityCount = 0;
 
-export class World {
+export class WorldOne {
     constructor(handler) {
         this.handler = handler;
         this.entityManager = handler.createEntityManager();
@@ -65,7 +63,7 @@ export class World {
         this.entityManager.addEntity(Garden.create(this.handler, 101, ySpawn));
 
         // TODO: Make Playter object to track stats/upgrades/heroes/etc
-        const availableHeroes = [Walnut]
+        const availableHeroes = [Walnut, Potatank]
         // const button = { x: 101, width: 160, height: 80 };
 
       this.uiManager.createHeroButtonsFromHeroes(availableHeroes);

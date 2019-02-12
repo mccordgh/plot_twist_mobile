@@ -1,14 +1,14 @@
 import { Assets } from '../../../assets/assets';
 import {Hero} from "./hero";
 
-export class Walnut extends Hero {
+export class Potatank extends Hero {
   constructor(handler, x, y) {
     super(handler, x, y);
 
-    this.assets = Assets.getAssets('walnut').walnut;
+    this.assets = Assets.getAssets('potatank').potatank;
   }
 
   static getDisplayName(){
-    return 'Walnut';
+    return 'Potatank';
   }
 }

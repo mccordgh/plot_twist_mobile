@@ -1,4 +1,3 @@
-import { Assets } from '../../../assets/assets';
 import gameConstants from '../../../../constants/game-constants';
 import {Creature} from "../creature";
 
@@ -21,11 +20,7 @@ export class Hero extends Creature {
       height: this.height,
     };
 
-
-    // this.assets = Assets.getAssets('walnut');
-
     this.type = gameConstants.TYPES.HERO;
-
   }
 
   static getDisplayName(){
@@ -44,7 +39,7 @@ export class Hero extends Creature {
   }
 
   render(graphics) {
-    graphics.drawSprite(this.assets.walnut, this.x, this.y, this.height, this.width);
+    graphics.drawSprite(this.assets, this.x, this.y, this.height, this.width);
     // graphics.fillStyle = 'purple';
     // graphics.fillRect(this.x, this.y, this.width, this.height);
 
