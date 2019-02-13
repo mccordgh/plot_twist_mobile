@@ -34,12 +34,18 @@ walnut.walnut = walnut.sheet.crop(0, 0, 32, 64);
 const potatank = new Assets('potatank', `${path}/potatank.png`);
 potatank.potatank = potatank.sheet.crop(0, 0, 32, 64);
 
+const tomato = new Assets('tomato', `${path}/tomato.png`);
+tomato.tomato = tomato.sheet.crop(0, 0, 32, 64);
+
 /* SEEDS */
 const walnutSeed = new Assets('walnutSeed', `${path}/tilesets/plants.png`);
 walnutSeed.walnutSeed = walnutSeed.sheet.crop(0, 0, gameConstants.PLOT_WIDTH, gameConstants.PLOT_HEIGHT);
 
 const potatoSeed = new Assets('potatoSeed', `${path}/tilesets/potatoSeed.png`);
 potatoSeed.walnutSeed = potatoSeed.sheet.crop(0, 0, gameConstants.PLOT_WIDTH, gameConstants.PLOT_HEIGHT);
+
+const tomatoSeed = new Assets('tomatoSeed', `${path}/tilesets/tomatoSeed.png`);
+tomatoSeed.tomatoSeed = tomatoSeed.sheet.crop(0, 0, gameConstants.PLOT_WIDTH, gameConstants.PLOT_HEIGHT);
 
 /* HOUSE */
 const house = new Assets('house', `${path}/single_house.png`);
