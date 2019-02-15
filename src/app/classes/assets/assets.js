@@ -40,8 +40,8 @@ potatoSeed.potatoSeed = potatoSeed.sheet.crop(0, 0, gameConstants.PLOT_WIDTH, ga
 const walnut = new Assets('walnut', `${path}/walnut_dude.png`);
 walnut.walnut = walnut.sheet.crop(0, 0, 32, 64);
 
-const potatank = new Assets('potatank', `${path}/potatank.png`);
-potatank.potatank = potatank.sheet.crop(0, 0, 32, 64);
+const potato = new Assets('potato', `${path}/potato.png`);
+potato.potato = potato.sheet.crop(0, 0, 32, 64);
 
 
 /* HOUSE */
