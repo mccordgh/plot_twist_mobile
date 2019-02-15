@@ -11,6 +11,6 @@ export class PotatoSeed extends Seed {
     }
 
     static getDisplayName() {
-        return 'Potatank';
+        return 'Potatank1';
     }
 }
