@@ -14,8 +14,7 @@ export class Monster extends Creature {
         this.height = 64;
         this.baseAttack = 4;
 
-        const boundsX = Math.floor(this.width/4);
-
+        const boundsX = Math.floor(this.width / 4);
         this.bounds = {
             x: 0,
             y: 0,

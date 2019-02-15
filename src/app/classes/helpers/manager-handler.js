@@ -5,8 +5,8 @@ import { StateManager } from '../states/state-manager';
 import { WorldOne } from '../worlds/world-one';
 import { MonsterManager } from '../entities/creatures/monsters/monster-manager';
 import { HeroManager } from '../entities/creatures/heroes/hero-manager';
-import {UiManager} from "../entities/ui/ui-manager";
-import {SeedManager} from "../entities/static-entities/seeds/seed-manager";
+import { UiManager } from '../entities/ui/ui-manager';
+import { SeedManager } from '../entities/static-entities/seeds/seed-manager';
 
 export class ManagerHandler {
     constructor(game) {
@@ -16,18 +16,14 @@ export class ManagerHandler {
         this.graphicsManager = null;
         this.monsterManager = null;
         this.mouseManager = null;
-        this.stateManager = null;
         this.seedManager = null;
+        this.stateManager = null;
         this.uiManager = null;
         this.world = null;
     }
 
     getEntityManager() {
         return this.entityManager;
-    }
-
-    getSeedManager(){
-        return this.seedManager;
     }
 
     getGame() {
@@ -46,7 +42,11 @@ export class ManagerHandler {
         return this.mouseManager;
     }
 
-    getUiManager(){
+    getSeedManager() {
+        return this.seedManager;
+    }
+
+    getUiManager() {
         return this.uiManager;
     }
 
@@ -74,7 +74,7 @@ export class ManagerHandler {
         return this.heroManager = new HeroManager(this);
     }
 
-    createSeedManager(){
+    createSeedManager() {
         return this.seedManager = new SeedManager(this);
     }
 
@@ -82,12 +82,12 @@ export class ManagerHandler {
         return this.stateManager = new StateManager();
     }
 
-    createWorld() {
-        return this.world = new WorldOne(this);
+    createUiManager() {
+        return this.uiManager = new UiManager(this);
     }
 
-    createUiManager(){
-        return this.uiManager = new UiManager(this);
+    createWorld() {
+        return this.world = new WorldOne(this);
     }
 
     event(type, data) {

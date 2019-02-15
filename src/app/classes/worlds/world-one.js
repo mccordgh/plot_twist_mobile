@@ -1,12 +1,12 @@
+
 import { FarmHouse } from '../entities/static-entities/farm-house';
 import { Garden } from '../entities/static-entities/garden/garden';
 import gameConstants from '../../constants/game-constants';
 import { SpatialGrid } from '../entities/collision/spatial-grid';
-import {Walnut} from '../entities/creatures/heroes/walnut'
-import {Potatank} from "../entities/creatures/heroes/potato";
+import { WalnutSeed } from '../entities/static-entities/seeds/walnut-seed';
+import { PotatoSeed } from '../entities/static-entities/seeds/potato-seed';
 
 let counter = 0;
-// let entityCount = 0;
 
 export class WorldOne {
     constructor(handler) {
@@ -14,8 +14,8 @@ export class WorldOne {
         this.entityManager = handler.createEntityManager();
         this.monsterManager = handler.createMonsterManager();
         this.heroManager = handler.createHeroManager();
-        this.uiManager = handler.createUiManager();
         this.seedManager = handler.createSeedManager();
+        this.uiManager = handler.createUiManager();
 
         this.spatialGrid = new SpatialGrid(
             gameConstants.GAME_WIDTH,
@@ -24,18 +24,25 @@ export class WorldOne {
         );
     }
 
+    loadEntities() {
+        const ySpawn = 90;
+
+        this.entityManager.addEntity(new FarmHouse(this.handler, 0, ySpawn));
+        this.entityManager.addEntity(Garden.create(this.handler, 101, ySpawn));
+
+        //TODO: Make Player object to track stats/upgrades/heroes/etc
+        const availableSeeds = [WalnutSeed, PotatoSeed];
+
+        this.uiManager.createButtonsFromSeeds(availableSeeds);
+    }
+
     tick(deltaTime) {
         counter++;
 
-        if (counter >= (gameConstants.FPS / 2)) {
+        if (counter >= (gameConstants.FPS)) {
             counter = 0;
 
-            // if (entityCount < 20) {
-                this.monsterManager.spawnMonster();
-                // this.heroManager.spawnHero();
-
-                // entityCount += 2;
-            // }
+            this.monsterManager.spawnMonster();
         }
 
         this.entityManager.tick(deltaTime);
@@ -57,22 +64,6 @@ export class WorldOne {
         graphics.fillRect(0, 0, gameConstants.GAME_WIDTH, gameConstants.GAME_HEIGHT);
     }
 
-    loadEntities() {
-        const ySpawn = 90;
-
-        this.entityManager.addEntity(new FarmHouse(this.handler, 0, ySpawn));
-        this.entityManager.addEntity(Garden.create(this.handler, 101, ySpawn));
-
-        // TODO: Make Playter object to track stats/upgrades/heroes/etc
-        const availableSeeds = [Walnut]
-        // const button = { x: 101, width: 160, height: 80 };
-
-      this.uiManager.createSeedButtonsFromSeeds(availableSeeds);
-
-        // this.uiManager.createUiEntity(
-        //   this.handler, button.x, gameConstants.GAME_HEIGHT - button.height - 6, button.width, button.height
-        // );
-    }
 
     getSpatialGrid() {
         return this.spatialGrid;

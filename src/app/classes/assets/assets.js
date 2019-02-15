@@ -23,9 +23,18 @@ export class Assets {
 const cursor = new Assets('cursor', `${path}/cursor.png`);
 cursor.pointer = cursor.sheet.crop(0, 0, 28, 32);
 
+
 /* MONSTERS */
 const skeleton = new Assets('skeleton', `${path}/single_skeleton.png`);
 skeleton.skeleton = skeleton.sheet.crop(0, 0, 32, 64);
+
+
+/* SEEDS */
+const walnutSeed = new Assets('walnutSeed', `${path}/walnut_seed.png`);
+walnutSeed.walnutSeed = walnutSeed.sheet.crop(0, 0, gameConstants.PLOT_WIDTH, gameConstants.PLOT_HEIGHT);
+
+const potatoSeed = new Assets('potatoSeed', `${path}/potato_seed.png`);
+potatoSeed.potatoSeed = potatoSeed.sheet.crop(0, 0, gameConstants.PLOT_WIDTH, gameConstants.PLOT_HEIGHT);
 
 /* HEROES */
 const walnut = new Assets('walnut', `${path}/walnut_dude.png`);
@@ -34,18 +43,6 @@ walnut.walnut = walnut.sheet.crop(0, 0, 32, 64);
 const potatank = new Assets('potatank', `${path}/potatank.png`);
 potatank.potatank = potatank.sheet.crop(0, 0, 32, 64);
 
-const tomato = new Assets('tomato', `${path}/tomato.png`);
-tomato.tomato = tomato.sheet.crop(0, 0, 32, 64);
-
-/* SEEDS */
-const walnutSeed = new Assets('walnutSeed', `${path}/tilesets/plants.png`);
-walnutSeed.walnutSeed = walnutSeed.sheet.crop(0, 0, gameConstants.PLOT_WIDTH, gameConstants.PLOT_HEIGHT);
-
-const potatoSeed = new Assets('potatoSeed', `${path}/tilesets/potatoSeed.png`);
-potatoSeed.walnutSeed = potatoSeed.sheet.crop(0, 0, gameConstants.PLOT_WIDTH, gameConstants.PLOT_HEIGHT);
-
-const tomatoSeed = new Assets('tomatoSeed', `${path}/tilesets/tomatoSeed.png`);
-tomatoSeed.tomatoSeed = tomatoSeed.sheet.crop(0, 0, gameConstants.PLOT_WIDTH, gameConstants.PLOT_HEIGHT);
 
 /* HOUSE */
 const house = new Assets('house', `${path}/single_house.png`);

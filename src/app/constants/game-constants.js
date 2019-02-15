@@ -24,12 +24,6 @@ export default {
         UI: 'ui',
     },
 
-  HERO_TYPES:{
-    POTATO: 'potato',
-    TOMATO:'tomato',
-    WALNUT:'walnut'
-  },
-
     FINGER_WIDTH: 16,
 
     rndIndex: (arr) => arr[Math.floor(Math.random() * (arr.length))],

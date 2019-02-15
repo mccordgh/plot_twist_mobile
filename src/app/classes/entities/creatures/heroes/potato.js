@@ -1,14 +1,17 @@
 import { Assets } from '../../../assets/assets';
-import {Hero} from "./hero";
+import { Hero } from './hero';
 
 export class Potatank extends Hero {
-  constructor(handler, x, y) {
-    super(handler, x, y);
+    constructor(handler, x, y) {
+        super(handler, x, y);
 
-    this.assets = Assets.getAssets('potatank').potatank;
-  }
+        this.health = 400;
+        this.baseAttack = 3;
 
-  static getDisplayName(){
-    return 'Potatank';
-  }
+        this.assets = Assets.getAssets('potatank').potatank;
+    }
+
+    static getDisplayName() {
+        return 'potato';
+    }
 }
