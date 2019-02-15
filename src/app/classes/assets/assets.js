@@ -39,3 +39,13 @@ const tomato = new Assets('tomato', `${path}/tomato.png`);
 
 /* HOUSE */
 const house = new Assets('house', `${path}/single_house.png`, [0, 0, 100, 368]);
+
+/* LANDSCAPE */
+const tileSize = 32
+const grass = new Assets('grass', `${path}/tileset_preview.png`, [19*tileSize, 6*tileSize, tileSize, tileSize]);
+const plot = new Assets('plot', `${path}/tileset_preview.png`, [4*tileSize, 13*tileSize, tileSize, tileSize]);
+const garden = new Assets('garden', `${path}/tileset_preview.png`, [11*tileSize, 0, tileSize, tileSize]);
+
+/* UI */
+const button = new Assets('button', `${path}/ui/scrollsandblocks.png`, [tileSize, 0, 2*tileSize, 2*tileSize]);
+const pressedButton = new Assets('pressedButton', `${path}/ui/scrollsandblocks.png`, [tileSize, tileSize, 2*tileSize, 2*tileSize]);

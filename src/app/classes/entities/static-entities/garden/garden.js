@@ -3,6 +3,7 @@ import { Plot } from './plot';
 import gameConstants from '../../../../constants/game-constants';
 import { Lane } from '../lane';
 import { Rectangle } from '../../collision/rectangle';
+import {Assets} from "../../../assets/assets";
 
 export class Garden extends StaticEntity {
     constructor(handler, x, y) {
@@ -115,6 +116,12 @@ export class Garden extends StaticEntity {
     drawSelf(graphics) {
         graphics.fillStyle = 'brown';
         graphics.fillRect(this.x, this.y, this.width, this.height);
+      const assetSize = 32
+      for(let i =this.x; i < (this.width+this.x); i+=assetSize){
+        for(let j=this.y; j < (this.height+this.y); j+=assetSize){
+          graphics.drawSprite(this.assets = Assets.getAssets('garden').garden, i, j, assetSize, assetSize);
+        }
+      }
     }
 
     tick() {

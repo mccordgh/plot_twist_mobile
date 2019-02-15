@@ -6,6 +6,7 @@ import { SpatialGrid } from '../entities/collision/spatial-grid';
 import { WalnutSeed } from '../entities/static-entities/seeds/walnut-seed';
 import { PotatoSeed } from '../entities/static-entities/seeds/potato-seed';
 import {TomatoSeed} from "../entities/static-entities/seeds/tomato-seed";
+import {Assets} from "../assets/assets";
 
 let counter = 0;
 
@@ -61,8 +62,13 @@ export class WorldOne {
     }
 
     drawBackground(graphics) {
-        graphics.fillStyle = 'green';
-        graphics.fillRect(0, 0, gameConstants.GAME_WIDTH, gameConstants.GAME_HEIGHT);
+       // Tiles background
+       const assetSize = 32
+      for(let i =0; i <= gameConstants.GAME_WIDTH; i+=assetSize){
+          for(let j=0; j<= gameConstants.GAME_HEIGHT; j+=assetSize){
+            graphics.drawSprite(this.assets = Assets.getAssets('grass').grass, i, j, assetSize, assetSize);
+          }
+      }
     }
 
 
