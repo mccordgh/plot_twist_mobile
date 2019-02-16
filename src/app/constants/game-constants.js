@@ -29,7 +29,9 @@ export default {
         PLOWED:'plowed',
         SEEDED:'seeded',
         GROWN:'grown',
-
+        PICKED:'picked',
+        PLAGUED:'plagued',
+        TRAMPLED:'trampled'
     },
 
     FINGER_WIDTH: 16,
