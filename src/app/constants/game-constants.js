@@ -24,6 +24,14 @@ export default {
         UI: 'ui',
     },
 
+    PLOT_STATE:{
+        EMPTY:'empty',
+        PLOWED:'plowed',
+        SEEDED:'seeded',
+        GROWN:'grown',
+
+    },
+
     FINGER_WIDTH: 16,
 
     rndIndex: (arr) => arr[Math.floor(Math.random() * (arr.length))],
