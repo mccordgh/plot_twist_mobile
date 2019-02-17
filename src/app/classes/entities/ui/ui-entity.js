@@ -31,7 +31,12 @@ export class UiEntity extends Entity {
     }
 
     activeAction(plot) {
-        this.handler.getSeedManager().spawnSeedAt(this.seed, plot.x, plot.y);
+        if(plot.state===gameConstants.PLOT_STATE.EMPTY){
+          this.handler.getSeedManager().spawnSeedAt(this.seed, plot.x, plot.y);
+          plot.state = gameConstants.PLOT_STATE.SEEDED;
+        } else if(plot.state===gameConstants.PLOT_STATE.PICKED){
+          plot.state=gameConstants.PLOT_STATE.EMPTY
+        }
     }
 
     tick(dt) {}

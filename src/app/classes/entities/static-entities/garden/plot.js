@@ -11,7 +11,7 @@ export class Plot extends StaticEntity {
 
         this.type = gameConstants.TYPES.PLOT;
 
-        this.state = gameConstants.PLOT_STATE.EMPTY
+        this.state = gameConstants.PLOT_STATE.EMPTY;
 
       this.assets = Assets.getAssets('plot').plot;
     }
