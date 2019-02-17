@@ -43,7 +43,10 @@ const house = new Assets('house', `${path}/single_house.png`, [0, 0, 100, 368]);
 /* LANDSCAPE */
 const tileSize = 32
 const grass = new Assets('grass', `${path}/tileset_preview.png`, [19*tileSize, 6*tileSize, tileSize, tileSize]);
-const plot = new Assets('plot', `${path}/tileset_preview.png`, [4*tileSize, 13*tileSize, tileSize, tileSize]);
+const emptyPlot = new Assets('emptyPlot', `${path}/tileset_preview.png`, [4*tileSize, 13*tileSize, tileSize, tileSize]);
+const plowedPlot = new Assets('plowedPlot', `${path}/tileset_preview.png`, [5*tileSize, 13*tileSize, tileSize, tileSize]);
+const seededPlot = new Assets('seededPlot', `${path}/tileset_preview.png`, [4*tileSize, 13*tileSize, tileSize, tileSize]);
+const pickedPlot = new Assets('pickedPlot', `${path}/tileset_preview.png`, [9*tileSize, 14*tileSize, tileSize, tileSize]);
 const garden = new Assets('garden', `${path}/tileset_preview.png`, [11*tileSize, 0, tileSize, tileSize]);
 
 /* UI */

@@ -31,12 +31,24 @@ export class UiEntity extends Entity {
     }
 
     activeAction(plot) {
-        if(plot.state===gameConstants.PLOT_STATE.EMPTY){
+      // TODO: break this out into separate function?
+      switch(plot.state){
+        case gameConstants.PLOT_STATE.EMPTY:
+          plot.state=gameConstants.PLOT_STATE.PLOWED;
+          break;
+        case gameConstants.PLOT_STATE.PLOWED:
           this.handler.getSeedManager().spawnSeedAt(this.seed, plot.x, plot.y);
           plot.state = gameConstants.PLOT_STATE.SEEDED;
-        } else if(plot.state===gameConstants.PLOT_STATE.PICKED){
-          plot.state=gameConstants.PLOT_STATE.EMPTY
-        }
+          //  Ask Matt how to fix this later.
+          setTimeout(() => plot.state=gameConstants.PLOT_STATE.PICKED, 2000);
+          break;
+        case gameConstants.PLOT_STATE.PICKED:
+            plot.state = gameConstants.PLOT_STATE.EMPTY;
+            break;
+        default:
+          break;
+      }
+
     }
 
     tick(dt) {}
