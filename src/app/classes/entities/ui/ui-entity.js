@@ -1,5 +1,6 @@
 import { Entity } from '../entity';
 import gameConstants from '../../../constants/game-constants';
+import {Assets} from "../../assets/assets";
 
 
 export class UiEntity extends Entity {
@@ -20,6 +21,9 @@ export class UiEntity extends Entity {
             height: this.height,
         };
 
+        this.assets  = {};
+        this.assets.button = Assets.getAssets('button').button;
+        this.assets.pressedButton = Assets.getAssets('pressedButton').pressedButton;
         this.text = this.seed.getDisplayName();
         this.active = false;
 
@@ -33,13 +37,15 @@ export class UiEntity extends Entity {
     tick(dt) {}
 
     render(graphics) {
-        const backgroundColor = this.active ? 'limegreen' : 'purple';
-        const textColor = this.active ? 'black' : 'white';
+        const background = this.active ? this.assets.pressedButton : this.assets.button;
+        const textColor = this.active ? 'white' : '#999';
 
         // ****** DRAW BOUNDING BOX
-        graphics.fillStyle = backgroundColor;
-        graphics.fillRect(this.bounds.x + this.x, this.bounds.y + this.y, this.bounds.width, this.bounds.height);
+        // graphics.fillStyle = backgroundColor;
+        // graphics.fillRect(this.bounds.x + this.x, this.bounds.y + this.y, this.bounds.width, this.bounds.height);
         // ****** DRAW BOUNDING BOX
+
+        graphics.drawSprite(background, this.bounds.x + this.x, this.bounds.y + this.y, this.bounds.width, this.bounds.height*2)
 
         graphics.drawText(this.text, this.x + 12, this.y + 54, textColor);
     }

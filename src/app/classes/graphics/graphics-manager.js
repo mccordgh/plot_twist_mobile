@@ -9,6 +9,7 @@ export class GraphicsManager {
 
     customizeContext() {
         CanvasRenderingContext2D.prototype.drawSprite = (asset, x, y, width = gameConstants.PLOT_WIDTH, height = gameConstants.PLOT_HEIGHT) => {
+            // TODO: I think we mixed up height and width at the end of this...
             this.graphics.drawImage(asset.sheet, asset.x, asset.y, asset.width, asset.height, x, y, height, width);
         };
 
