@@ -31,11 +31,14 @@ const skeleton = new Assets('skeleton', `${path}/single_skeleton.png`, [0, 0, 32
 const walnutSeed = new Assets('walnutSeed', `${path}/walnut_seed.png`);
 const potatoSeed = new Assets('potatoSeed', `${path}/potato_seed.png`);
 const tomatoSeed = new Assets('tomatoSeed', `${path}/tilesets/plants.png`, [6*32, 32, 32, 32]);
+const onionSeed = new Assets('onionSeed', `${path}/tilesets/plants.png`, [5*32, 32, 32, 32]);
 
 /* HEROES */
 const walnut = new Assets('walnut', `${path}/walnut_dude.png`, [0, 0, 32, 64]);
 const potato = new Assets('potato', `${path}/potato.png`, [0, 0, 32, 64]);
 const tomato = new Assets('tomato', `${path}/tomato.png`);
+const onion = new Assets('onion', `${path}/onion.png`, [0, 0, 32, 64]);
+
 
 /* HOUSE */
 const house = new Assets('house', `${path}/single_house.png`, [0, 0, 100, 368]);
