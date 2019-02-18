@@ -23,6 +23,8 @@ export class Plot extends StaticEntity {
 
     tick() {
         // I feel like we should hold some of the growing seed's function in the plot as well as the seed
+
+
     }
 
     sownBy(seed){
