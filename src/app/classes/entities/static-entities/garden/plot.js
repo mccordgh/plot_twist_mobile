@@ -22,7 +22,26 @@ export class Plot extends StaticEntity {
     }
 
     tick() {
-        //
+        // I feel like we should hold some of the growing seed's function in the plot as well as the seed
+    }
+
+    sownBy(seed){
+      switch(this.state){
+        case gameConstants.PLOT_STATE.EMPTY:
+          this.state=gameConstants.PLOT_STATE.PLOWED;
+          break;
+        case gameConstants.PLOT_STATE.PLOWED:
+          this.handler.getSeedManager().spawnSeedAt(seed, this.x, this.y);
+          this.state = gameConstants.PLOT_STATE.SEEDED;
+          //  Ask Matt how to fix this later.
+          setTimeout(() => this.state=gameConstants.PLOT_STATE.PICKED, 2000);
+          break;
+        case gameConstants.PLOT_STATE.PICKED:
+          this.state = gameConstants.PLOT_STATE.EMPTY;
+          break;
+        default:
+          break;
+      }
     }
 
     render(graphics) {

@@ -18,7 +18,6 @@ export class Seed extends StaticEntity {
     static getDisplayName() {
         throw new Error('Hero must have a "getDisplayName()" method!');
     }
-
     tick(dt) {
        this.gestationCounter += 1;
 

@@ -21,9 +21,10 @@ export class UiEntity extends Entity {
             height: this.height,
         };
 
-        this.assets  = {};
-        this.assets.button = Assets.getAssets('button').button;
-        this.assets.pressedButton = Assets.getAssets('pressedButton').pressedButton;
+        this.assets  = {
+            button:Assets.getAssets('button').button,
+            pressedButton:Assets.getAssets('pressedButton').pressedButton
+        }
         this.text = this.seed.getDisplayName();
         this.active = false;
 
@@ -31,24 +32,9 @@ export class UiEntity extends Entity {
     }
 
     activeAction(plot) {
-      // TODO: break this out into separate function?
-      switch(plot.state){
-        case gameConstants.PLOT_STATE.EMPTY:
-          plot.state=gameConstants.PLOT_STATE.PLOWED;
-          break;
-        case gameConstants.PLOT_STATE.PLOWED:
-          this.handler.getSeedManager().spawnSeedAt(this.seed, plot.x, plot.y);
-          plot.state = gameConstants.PLOT_STATE.SEEDED;
-          //  Ask Matt how to fix this later.
-          setTimeout(() => plot.state=gameConstants.PLOT_STATE.PICKED, 2000);
-          break;
-        case gameConstants.PLOT_STATE.PICKED:
-            plot.state = gameConstants.PLOT_STATE.EMPTY;
-            break;
-        default:
-          break;
-      }
-
+        if(plot.type===gameConstants.TYPES.PLOT){
+          plot.sownBy(this.seed)
+        }
     }
 
     tick(dt) {}
