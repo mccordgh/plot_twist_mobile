@@ -21,10 +21,8 @@ export class UiEntity extends Entity {
             height: this.height,
         };
 
-        this.assets  = {
-            button:Assets.getAssets('button').button,
-            pressedButton:Assets.getAssets('pressedButton').pressedButton
-        }
+        this.assets  = { ...Assets.getAssets('button') };
+
         this.text = this.seed.getDisplayName();
         this.active = false;
 

@@ -34,10 +34,11 @@ export class Monster extends Creature {
         this.xMove = -this.speed * dt;
 
         this.move();
+        this.assets.animations['walk_left'].tick();
     }
 
     render(graphics) {
-        graphics.drawSprite(this.assets, this.x, this.y, this.height, this.width);
+        graphics.drawSprite(this.getAnimationFrame(), this.x, this.y, this.width, this.height);
         // graphics.fillStyle = 'purple';
         // graphics.fillRect(this.x, this.y, this.width, this.height);
 

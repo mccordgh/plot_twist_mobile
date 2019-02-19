@@ -14,6 +14,14 @@ export class Hero extends Creature {
         this.health = 50;
         this.baseAttack = 4;
 
+        this.type = gameConstants.TYPES.HERO;
+    }
+
+    static getDisplayName() {
+        throw new Error('Hero must have a "getDisplayName()" method!');
+    }
+
+    setDefaultBounds() {
         const boundsX = Math.floor(this.width / 4);
         this.bounds = {
             x: this.width - boundsX,
@@ -21,12 +29,6 @@ export class Hero extends Creature {
             width: boundsX,
             height: this.height,
         };
-
-        this.type = gameConstants.TYPES.HERO;
-    }
-
-    static getDisplayName() {
-        throw new Error('Hero must have a "getDisplayName()" method!');
     }
 
     tick(dt) {
@@ -38,14 +40,22 @@ export class Hero extends Creature {
         this.xMove = this.speed * dt;
 
         this.move();
+        this.assets.animations['walk_right'].tick();
     }
 
     render(graphics) {
-        graphics.drawSprite(this.assets, this.x, this.y, this.height, this.width);
+        if (this.getAnimationFrame()) {
+            graphics.drawSprite(this.getAnimationFrame(), this.x, this.y, this.width, this.height);
+        }
 
         // ****** DRAW BOUNDING BOX
         // graphics.fillStyle = "purple";
         // graphics.fillRect(this.bounds.x + this.x, this.bounds.y + this.y, this.bounds.width, this.bounds.height);
         // ****** DRAW BOUNDING BOX
+    }
+
+
+    getAnimationFrame() {
+        return this.assets.animations['walk_right'].getCurrentFrame();
     }
 }

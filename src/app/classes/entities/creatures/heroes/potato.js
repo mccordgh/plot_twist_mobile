@@ -8,7 +8,9 @@ export class Potato extends Hero {
         this.health = 400;
         this.baseAttack = 3;
 
-        this.assets = Assets.getAssets('potato').potato;
+        this.assets = Assets.getAssets('potato');
+
+        this.setDefaultBounds();
     }
 
     static getDisplayName() {

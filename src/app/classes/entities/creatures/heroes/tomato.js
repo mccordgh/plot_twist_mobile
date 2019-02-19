@@ -10,15 +10,9 @@ export class Tomato extends Hero {
     this.height = 80;
     this.baseAttack = 3;
 
-    const boundsX = Math.floor(this.width / 4);
-    this.bounds = {
-      x: this.width - boundsX,
-      y: 0,
-      width: boundsX,
-      height: this.height,
-    };
+    this.assets = Assets.getAssets('tomato');
 
-    this.assets = Assets.getAssets('tomato').tomato;
+    this.setDefaultBounds();
   }
 
   static getDisplayName() {

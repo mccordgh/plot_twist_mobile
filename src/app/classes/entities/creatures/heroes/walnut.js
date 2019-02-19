@@ -8,7 +8,9 @@ export class Walnut extends Hero {
         this.health = 200;
         this.baseAttack = 6;
 
-        this.assets = Assets.getAssets('walnut').walnut;
+        this.assets = Assets.getAssets('walnut');
+
+        this.setDefaultBounds();
     }
 
     static getDisplayName() {

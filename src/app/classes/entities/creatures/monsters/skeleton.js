@@ -7,6 +7,10 @@ export class Skeleton extends Monster {
 
         this.baseAttack = 10;
 
-        this.assets = Assets.getAssets('skeleton').skeleton;
+        this.assets = Assets.getAssets('skeleton');
+    }
+
+    getAnimationFrame() {
+        return this.assets.animations['walk_left'].getCurrentFrame();
     }
 }

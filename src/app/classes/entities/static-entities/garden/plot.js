@@ -13,12 +13,7 @@ export class Plot extends StaticEntity {
 
         this.state = gameConstants.PLOT_STATE.EMPTY;
 
-        this.assets = {
-          empty:Assets.getAssets('emptyPlot').emptyPlot,
-          plowed:Assets.getAssets('plowedPlot').plowedPlot,
-          seeded:Assets.getAssets('seededPlot').seededPlot,
-          picked:Assets.getAssets('pickedPlot').pickedPlot
-        }
+        this.assets = { ...Assets.getAssets('plot') };
     }
 
     tick() {
@@ -45,7 +40,7 @@ export class Plot extends StaticEntity {
     }
 
     render(graphics) {
-        graphics.drawSprite(this.assets[this.state], this.x, this.y, this.height, this.width);
+        graphics.drawSprite(this.assets[this.state], this.x, this.y, this.width, this.height);
         /* PRINTS X AND Y COORDS */
         // graphics.drawText(this.x, this.x + 8, this.y + 20, 'black', 20);
         // graphics.drawText(this.y, this.x + 8, this.y + 50, 'black', 20);

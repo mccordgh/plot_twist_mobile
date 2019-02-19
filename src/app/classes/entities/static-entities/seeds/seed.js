@@ -22,14 +22,14 @@ export class Seed extends StaticEntity {
        this.gestationCounter += 1;
 
        if (this.gestationCounter >= this.gestationLength) {
-            this.handler.getHeroManager().spawnHeroAt(this.hero, this.x, this.y);
+            this.handler.getHeroManager().spawnHeroAtPlot(this);
             this.handler.getEntityManager().removeEntity(this);
        //     Is this the best place to empty the plot state? What's the best place to access it here? Should we hold this logic in the plot instead?
        }
     }
 
     render(graphics) {
-        graphics.drawSprite(this.assets, this.x, this.y, this.height, this.width);
+        graphics.drawSprite(this.assets, this.x, this.y, this.width, this.height);
 
         // ****** DRAW BOUNDING BOX
         // graphics.fillStyle = "purple";

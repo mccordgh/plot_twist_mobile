@@ -31,7 +31,7 @@ export class FarmHouse extends StaticEntity {
     render(graphics) {
         // graphics.fillStyle = 'red';
         // graphics.fillRect(this.x, this.y, this.width, this.height);
-        graphics.drawSprite(this.assets.house, this.x, this.y, this.height, this.width);
+        graphics.drawSprite(this.assets.house, this.x, this.y, this.width, this.height);
 
         graphics.drawText(`HOUSE HEALTH: ${this.health} / ${this.maxHealth}`, 20, 50);
         // ****** DRAW BOUNDING BOX

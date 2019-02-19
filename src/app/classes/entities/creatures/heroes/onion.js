@@ -8,7 +8,12 @@ export class Onion extends Hero {
     this.health = 400;
     this.baseAttack = 3;
 
-    this.assets = Assets.getAssets('onion').onion;
+    this.width = 70;
+    this.height = 91;
+
+    this.assets = Assets.getAssets('onion');
+
+    this.setDefaultBounds();
   }
 
   static getDisplayName() {
