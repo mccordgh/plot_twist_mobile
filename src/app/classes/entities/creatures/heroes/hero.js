@@ -54,7 +54,6 @@ export class Hero extends Creature {
         // ****** DRAW BOUNDING BOX
     }
 
-
     getAnimationFrame() {
         return this.assets.animations['walk_right'].getCurrentFrame();
     }

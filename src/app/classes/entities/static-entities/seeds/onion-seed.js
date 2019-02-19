@@ -12,6 +12,6 @@ export class OnionSeed extends Seed {
   }
 
   static getDisplayName() {
-    return 'Onion Knight';
+    return ' Onion';
   }
 }

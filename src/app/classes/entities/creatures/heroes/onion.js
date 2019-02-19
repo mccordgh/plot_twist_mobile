@@ -17,6 +17,6 @@ export class Onion extends Hero {
   }
 
   static getDisplayName() {
-    return 'Onion Knight';
+    return ' Onion';
   }
 }
