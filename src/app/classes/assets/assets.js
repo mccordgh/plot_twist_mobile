@@ -128,7 +128,7 @@ garden.garden = garden.sheet.crop(11*32, 0, 32, 32);
 const plot = new Assets('plot', "/tileset_preview.png");
 plot.empty = plot.sheet.crop(4*32, 13*32, 32, 32);
 plot.plowed = plot.sheet.crop(5*32, 13*32, 32, 32);
-plot.seeded = plot.sheet.crop(4*32, 13*32, 32, 32);
+plot.seeded = plot.sheet.crop(3*32, 13*32, 32, 32);
 plot.picked = plot.sheet.crop(9*32, 14*32, 32, 32);
 
 

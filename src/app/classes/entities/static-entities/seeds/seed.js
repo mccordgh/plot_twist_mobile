@@ -3,11 +3,11 @@ import { StaticEntity } from '../static-entity';
 import gameConstants from '../../../../constants/game-constants';
 
 export class Seed extends StaticEntity {
-    constructor(handler, x, y) {
-        super(handler, x, y);
+    constructor(handler, plot) {
+        super(handler, plot.x, plot.y);
 
-        this.x = x;
-        this.y = y;
+        this.plot = plot;
+
         this.height = gameConstants.PLOT_HEIGHT;
         this.width = gameConstants.PLOT_WIDTH;
 
@@ -22,6 +22,7 @@ export class Seed extends StaticEntity {
        this.gestationCounter += 1;
 
        if (this.gestationCounter >= this.gestationLength) {
+            this.plot.state = this.plot.states.EMPTY;
             this.handler.getHeroManager().spawnHeroAtPlot(this);
             this.handler.getEntityManager().removeEntity(this);
        //     Is this the best place to empty the plot state? What's the best place to access it here? Should we hold this logic in the plot instead?

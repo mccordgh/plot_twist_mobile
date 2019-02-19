@@ -1,5 +1,5 @@
 import { StaticEntity } from '../static-entity';
-import { Plot } from './plot';
+import { Plot } from './plot/plot';
 import gameConstants from '../../../../constants/game-constants';
 import { Lane } from '../lane';
 import { Rectangle } from '../../collision/rectangle';

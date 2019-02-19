@@ -3,13 +3,17 @@ export class SeedManager {
         this.handler = handler;
     }
 
-    createSeed(seed, x, y, ) {
+    createSeed(seed, plot) {
         this.handler.getEntityManager().addEntity(
-            new seed(this.handler, x, y),
+            new seed(this.handler, plot),
         );
     }
 
     spawnSeedAt(seed, x, y) {
         this.createSeed(seed, x, y);
+    }
+
+    spawnSeedAtPlot(seed, plot) {
+        this.createSeed(seed, plot);
     }
 }
