@@ -7,6 +7,7 @@ import { WalnutSeed } from '../entities/static-entities/seeds/walnut-seed';
 import { PotatoSeed } from '../entities/static-entities/seeds/potato-seed';
 import {TomatoSeed} from "../entities/static-entities/seeds/tomato-seed";
 import {Assets} from "../assets/assets";
+import {OnionSeed} from "../entities/static-entities/seeds/onion-seed";
 
 let counter = 0;
 
@@ -33,7 +34,7 @@ export class WorldOne {
         this.entityManager.addEntity(Garden.create(this.handler, 101, ySpawn));
 
         //TODO: Make Player object to track stats/upgrades/heroes/etc
-        const availableSeeds = [WalnutSeed, PotatoSeed, TomatoSeed];
+        const availableSeeds = [WalnutSeed, PotatoSeed, TomatoSeed, OnionSeed];
 
         this.uiManager.createButtonsFromSeeds(availableSeeds);
     }

@@ -21,9 +21,10 @@ export class UiEntity extends Entity {
             height: this.height,
         };
 
-        this.assets  = {};
-        this.assets.button = Assets.getAssets('button').button;
-        this.assets.pressedButton = Assets.getAssets('pressedButton').pressedButton;
+        this.assets  = {
+            button:Assets.getAssets('button').button,
+            pressedButton:Assets.getAssets('pressedButton').pressedButton
+        }
         this.text = this.seed.getDisplayName();
         this.active = false;
 
@@ -31,7 +32,9 @@ export class UiEntity extends Entity {
     }
 
     activeAction(plot) {
-        this.handler.getSeedManager().spawnSeedAt(this.seed, plot.x, plot.y);
+        if(plot.type===gameConstants.TYPES.PLOT){
+          plot.sownBy(this.seed)
+        }
     }
 
     tick(dt) {}

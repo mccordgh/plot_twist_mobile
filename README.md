@@ -15,4 +15,4 @@
 5. `$ npm install`
 6. `$ npm run start`
 7. Navigate to `http://localhost:8080/`
-8. There should be a black screen with a big white box, and "`Hello world`" in the dev tools Console.
+8. There should be a screen with grass background and wooden buttons along the bottom.

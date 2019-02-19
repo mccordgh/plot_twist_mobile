@@ -8,8 +8,8 @@ export class Seed extends StaticEntity {
 
         this.x = x;
         this.y = y;
-        this.width = gameConstants.PLOT_HEIGHT;
-        this.height = gameConstants.PLOT_WIDTH;
+        this.height = gameConstants.PLOT_HEIGHT;
+        this.width = gameConstants.PLOT_WIDTH;
 
         this.gestationLength = gameConstants.FPS * 2;
         this.gestationCounter = 0;
@@ -18,13 +18,13 @@ export class Seed extends StaticEntity {
     static getDisplayName() {
         throw new Error('Hero must have a "getDisplayName()" method!');
     }
-
     tick(dt) {
        this.gestationCounter += 1;
 
        if (this.gestationCounter >= this.gestationLength) {
             this.handler.getHeroManager().spawnHeroAt(this.hero, this.x, this.y);
             this.handler.getEntityManager().removeEntity(this);
+       //     Is this the best place to empty the plot state? What's the best place to access it here? Should we hold this logic in the plot instead?
        }
     }
 
