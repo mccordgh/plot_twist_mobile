@@ -1,3 +1,5 @@
+const basePath = window.location.href;
+
 export default {
     FONT_SIZE: 32,
 
@@ -38,5 +40,6 @@ export default {
 
     rndIndex: (arr) => arr[Math.floor(Math.random() * (arr.length))],
 
-    BASE_PATH: window.location.href,
+    BASE_PATH: basePath,
+    ASSETS_PATH: `${basePath}src/resources`,
 }
