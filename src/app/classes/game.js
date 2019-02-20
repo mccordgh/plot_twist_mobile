@@ -55,8 +55,8 @@ export class Game {
     }
 
     // Update all game logic
-    tick(dt) {
-        this.stateManager.getState().tick(dt);
+    tick(deltaTime) {
+        this.stateManager.getState().tick(deltaTime);
     }
 
     // Draw everything after it is updated

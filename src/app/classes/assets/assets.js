@@ -24,19 +24,25 @@ export class Assets {
     }
 }
 
-const createAnimationFor = (asset, name, data) => {
-    data.frames = [];
-
-    for (let i = data.col; i < (data.length + data.col); i += 1) {
-        data.frames.push({
+// use object destructuring to create sensible defaults for forgotten/missed parameters
+const createAnimationFor = (asset, name, {speed = gameConstants.CREATURE_ANIM_STATS.speed,
+                                          row = gameConstants.CREATURE_ANIM_STATS.row,
+                                          col = gameConstants.CREATURE_ANIM_STATS.col,
+                                          length = gameConstants.CREATURE_ANIM_STATS.length,
+                                          width = gameConstants.CREATURE_ANIM_STATS.width,
+                                          height = gameConstants.CREATURE_ANIM_STATS.height,
+                                          frames = [],
+                                        } = {}) => {
+    for (let i = col; i < (length + col); i += 1) {
+        frames.push({
             frame: asset.sheet.crop(
-                data.width * i, data.height * data.row, data.width, data.height
+                width * i, height * row, width, height
             ),
-            speed: data.speed,
+            speed,
         });
     }
 
-    asset.addAnimation(name, new Animation(data.frames));
+    asset.addAnimation(name, new Animation(frames));
 }
 
 /* CURSOR */
@@ -47,12 +53,9 @@ cursor.pointer = cursor.sheet.crop(0, 0, 28, 32);
 /* MONSTERS */
 const skeleton = new Assets('skeleton', 'zombie_n_skeleton2.png');
 createAnimationFor(skeleton, 'walk_left', {
-    speed: 200,
     row: 1,
     col: 6,
     length: 3,
-    width: 32,
-    height: 64,
 });
 
 /* SEEDS */
@@ -71,42 +74,19 @@ onionSeed.onionSeed = onionSeed.sheet.crop(5*32, 32, 32, 32);
 
 /* HEROES */
 const walnut = new Assets('walnut', 'walnut_dude-sheet.png');
-createAnimationFor(walnut, 'walk_right', {
-    speed: 200,
-    row: 0,
-    col: 0,
-    length: 4,
-    width: 32,
-    height: 64,
-});
+createAnimationFor(walnut, 'walk_right');
 
 const potato = new Assets('potato', 'potato-sheet.png');
-createAnimationFor(potato, 'walk_right', {
-    speed: 200,
-    row: 0,
-    col: 0,
-    length: 4,
-    width: 32,
-    height: 64,
-});
+createAnimationFor(potato, 'walk_right');
 
 // 58w x 64h
 const tomato = new Assets('tomato', 'tomato-sheet.png');
-createAnimationFor(tomato, 'walk_right', {
-    speed: 200,
-    row: 0,
-    col: 0,
-    length: 4,
-    width: 58,
-    height: 64,
-});
+createAnimationFor(tomato, 'walk_right', {width: 58});
 
 // 70w x 91h
 const onion = new Assets('onion', 'heroes/knight.png');
 createAnimationFor(onion, 'walk_right', {
-    speed: 200,
     row: 2,
-    col: 0,
     length: 8,
     width: 70,
     height: 91,
