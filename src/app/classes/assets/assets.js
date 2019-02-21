@@ -58,6 +58,13 @@ createAnimationFor(skeleton, 'walk_left', {
     length: 3,
 });
 
+const zombie = new Assets('zombie', 'zombie_n_skeleton2.png');
+createAnimationFor(zombie, 'walk_left', {
+  row: 1,
+  col: 0,
+  length: 3,
+});
+
 /* SEEDS */
 const walnutSeed = new Assets('walnutSeed', 'walnut_seed.png');
 walnutSeed.walnutSeed = walnutSeed.sheet.crop(0, 0, gameConstants.PLOT_WIDTH, gameConstants.PLOT_HEIGHT);
