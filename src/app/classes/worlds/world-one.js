@@ -43,6 +43,7 @@ export class WorldOne {
     tick(deltaTime) {
         counter++;
 
+        // TODO: make a more sophisticated monster spawning algorithm
         if (counter >= (gameConstants.FPS)) {
             counter = 0;
 
