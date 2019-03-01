@@ -8,6 +8,7 @@ import { PotatoSeed } from '../entities/static-entities/seeds/potato-seed';
 import {TomatoSeed} from "../entities/static-entities/seeds/tomato-seed";
 import {Assets} from "../assets/assets";
 import {OnionSeed} from "../entities/static-entities/seeds/onion-seed";
+import {Zombie} from "../entities/creatures/monsters/zombie";
 
 let counter = 0;
 
@@ -42,10 +43,15 @@ export class WorldOne {
     tick(deltaTime) {
         counter++;
 
+        // TODO: make a more sophisticated monster spawning algorithm
         if (counter >= (gameConstants.FPS)) {
             counter = 0;
 
-            this.monsterManager.spawnMonster();
+            if(Math.random()>=.7){
+              this.monsterManager.spawnMonster(Zombie);
+            } else {
+              this.monsterManager.spawnMonster();
+            }
         }
 
         this.entityManager.tick(deltaTime);

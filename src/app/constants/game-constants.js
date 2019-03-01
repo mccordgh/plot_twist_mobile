@@ -26,6 +26,15 @@ export default {
         UI: 'ui',
     },
 
+    CREATURE_ANIM_STATS:{
+        speed:200,
+        width:32,
+        length:4,
+        height:64,
+        row:0,
+        col:0,
+    },
+
     FINGER_WIDTH: 16,
 
     rndIndex: (arr) => arr[Math.floor(Math.random() * (arr.length))],
