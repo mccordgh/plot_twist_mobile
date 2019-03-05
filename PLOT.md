@@ -30,6 +30,14 @@ Possible issue: leading people to believe certain pets can safely eat many diffe
 ## Mechanics
 Similar map style to Plants vs. Zombies, but mechanically and flavor-fully very different.
 
+5 "Lanes"
+
+Ground can offer advantages / disadvantages
+
+Columns can offer advantages / disadvantages
+
+Comboing veggies to create more powerful things.
+
 #### Advancement over time
 Short term resource gain: Killing/pacifying invaders, resources over time, and/or manual clicking (similar to P v Z)
 
